@@ -139,6 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2064204}
   _pedestal: {fileID: 888860362}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &2064204
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,6 +253,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 36688177}
   _pedestal: {fileID: 1001593960}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &36688177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -423,6 +429,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 264944415}
   _pedestal: {fileID: 567522107}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &264944415
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -616,6 +625,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 705219672}
   _pedestal: {fileID: 974260183}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &705219672
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -850,6 +862,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 915419272}
   _pedestal: {fileID: 1808800471}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &915419272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -942,6 +957,7 @@ GameObject:
   - component: {fileID: 928085347}
   - component: {fileID: 928085346}
   - component: {fileID: 928085345}
+  - component: {fileID: 928085350}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1019,6 +1035,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &928085350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 928085344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767d0bfd950415943be9b4df6ddb7d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974260182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1184884563}
   _pedestal: {fileID: 714728489}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &1184884563
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1243,6 +1273,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1357108392}
   _pedestal: {fileID: 741985960}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &1357108392
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1354,6 +1387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1584270120}
   _pedestal: {fileID: 628151790}
+  _ghostSprite: {fileID: 0}
+  _urnSprite: {fileID: 0}
+  _ghostDialogFileList: []
 --- !u!212 &1584270120
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1504,6 +1540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ae030aefedecb488d99424094b7c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stageText: {fileID: 0}
 --- !u!61 &1909027079
 BoxCollider2D:
   m_ObjectHideFlags: 0
