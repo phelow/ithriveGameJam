@@ -7,7 +7,7 @@ public class MusicManager {
 	private AudioSource musicSource;
 
 	public MusicManager(GameObject musicSourceObj) {
-        musicSource = musicSourceObj.GetComponent<AudioSource>();
+        musicSource = new AudioSource(); // musicSourceObj.GetComponent<AudioSource>();
 		trackMap = new Dictionary<string, AudioClip> ();
 	}
 

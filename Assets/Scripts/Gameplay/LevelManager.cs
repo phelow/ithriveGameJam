@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
     public static LevelManager s_instance;
@@ -22,6 +23,12 @@ public class LevelManager : MonoBehaviour {
         s_instance = this;
     }
 
+    private void Start()
+    {
+        Button btn = GetComponent<Button>();
+        btn.onClick.AddListener(AdvanceState);
+    }
+
     public LevelStage GetStage()
     {
         return _currentStage;
@@ -29,6 +36,7 @@ public class LevelManager : MonoBehaviour {
 
     public void AdvanceState()
     {
+        
         switch(_currentStage)
         {
             case LevelStage.Day:
@@ -51,19 +59,19 @@ public class LevelManager : MonoBehaviour {
     public void SetSpritesToGhosts()
     {
         Urn[] urns = GameObject.FindObjectsOfType<Urn>();
-        foreach (Urn urn in urns)
-        {
-            urn.EnterGhostmode();
-        }
+        //foreach (Urn urn in urns)
+        //{
+        //    urn.EnterGhostMode();
+        //}
     }
 
     public void SetSpritesToUrns()
     {
         Urn[] urns = GameObject.FindObjectsOfType<Urn>();
-        foreach (Urn urn in urns)
-        {
-            urn.SetSpriteToUrn();
-        }
+        //foreach (Urn urn in urns)
+        //{
+        //    urn.SetSpriteToUrn();
+        //}
     }
 
     public void CheckForEndOfGame()
@@ -81,9 +89,10 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    public void OnMouseDown()
-    {
-        AdvanceState();
-    }
+    //public void OnMouseDown()
+    //{
+        
+    //    AdvanceState();
+    //}
 
 }

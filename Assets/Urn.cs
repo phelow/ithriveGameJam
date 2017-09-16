@@ -5,16 +5,16 @@ using UnityEngine;
 public class Urn : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer _spriteRenderer;
+    private GameObject _character;
 
     [SerializeField]
     private Pedestal _pedestal;
 
-    [SerializeField]
-    private Sprite _ghostSprite;
+    //[SerializeField]
+    //private Sprite _ghostSprite;
 
-    [SerializeField]
-    private Sprite _urnSprite;
+    //[SerializeField]
+    //private Sprite _urnSprite;
 
     private static Urn _heldObject;
     [SerializeField]
@@ -33,21 +33,26 @@ public class Urn : MonoBehaviour
         }
     }
 
-    public void EnterGhostmode()
+    private void ClearHeldObject()
     {
-        if(_heldObject != null)
+        if (_heldObject != null)
         {
             _heldObject.SetColor(Color.white);
             _heldObject = null;
         }
-
-        _spriteRenderer.sprite = _ghostSprite;
-        _dialog = _ghostDialogList[Random.Range(0, _ghostDialogList.Count)];
     }
 
-    public void SetSpriteToUrn()
+    public void ShowCharacter()
     {
-        _spriteRenderer.sprite = _urnSprite;
+        ClearHeldObject();
+        _character.SetActive(true);
+        _dialog = _ghostDialogList[Random.Range(0, _ghostDialogList.Count)];
+    }
+    
+
+    public void HideCharacter()
+    {
+        _character.SetActive(false);
     }
 
     // Update is called once per frame
@@ -73,8 +78,11 @@ public class Urn : MonoBehaviour
 
     public void SetColor(Color newColor)
     {
-        _spriteRenderer.color = newColor;
+        
+        //_spriteRenderer.color = newColor;
     }
+
+    
 
     public void InteractWithHoldable(Urn holdable)
     {
@@ -83,23 +91,26 @@ public class Urn : MonoBehaviour
             TypeWriter.s_instance.PlayDialogue(_dialog);
             return;
         }
-
-        if (_heldObject == null)
+        else if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Morning)
         {
-            _heldObject = holdable;
-            _heldObject.SetColor(Color.yellow);
-            return;
+
+            if (_heldObject == null)
+            {
+                _heldObject = holdable;
+                _heldObject.SetColor(Color.yellow);
+                return;
+            }
+
+            Pedestal savedPedestal = holdable._pedestal;
+            holdable._pedestal = _heldObject._pedestal;
+            _heldObject._pedestal = savedPedestal;
+
+            Vector3 newPosition = _heldObject.transform.position;
+            _heldObject.transform.position = holdable.transform.position;
+            holdable.transform.position = newPosition;
+            _heldObject.SetColor(Color.white);
+            holdable.SetColor(Color.white);
+            _heldObject = null;
         }
-
-        Pedestal savedPedestal = holdable._pedestal;
-        holdable._pedestal = _heldObject._pedestal;
-        _heldObject._pedestal = savedPedestal;
-
-        Vector3 newPosition = _heldObject.transform.position;
-        _heldObject.transform.position = holdable.transform.position;
-        holdable.transform.position = newPosition;
-        _heldObject.SetColor(Color.white);
-        holdable.SetColor(Color.white);
-        _heldObject = null;
     }
 }
