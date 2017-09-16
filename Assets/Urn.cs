@@ -28,6 +28,11 @@ public class Urn : MonoBehaviour
         OnInteraction();
     }
 
+    public bool VictoryCheck()
+    {
+        return _pedestal.VictoryCheck(this);
+    }
+
     public void OnInteraction()
     {
         InteractWithHoldable(this);
