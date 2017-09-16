@@ -19,6 +19,7 @@ public class BootLoader : MonoBehaviour {
         Global.musicManager = new MusicManager(musicSource);
         Global.soundManager = new SoundManager();
         Global.dialogueManager = new DialogueManager(dialogueUI);
+        Global.timeManager = new TimeManager(5);
 
         /* Load Title Scene */
         // Make sure we're in the Bootloader scene, you never know...
