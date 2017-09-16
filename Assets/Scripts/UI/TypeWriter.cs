@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TypeWriter : MonoBehaviour {
-
+    public static TypeWriter s_instance;
     public GameObject dialoguePanel;
-    public Text textBox;
+    public TextMeshProUGUI textBox;
 
     private List<Sentence> sentences;
     private int currentPointer;
@@ -16,6 +17,7 @@ public class TypeWriter : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+        s_instance = this;
         dialoguePanel.SetActive(false);
     }
 
@@ -31,7 +33,7 @@ public class TypeWriter : MonoBehaviour {
 
     public bool PlayDialogue (Dialogue dialogue) {
         if (!playing) {
-            this.sentences = dialogue.sentences;
+            this.sentences = dialogue._sentences;
 
             return PlayToEnd();
         } else {
@@ -57,22 +59,22 @@ public class TypeWriter : MonoBehaviour {
     }
 
     IEnumerator AnimateText () {
-        for (int i = 0; i < (this.sentences[currentPointer].text.Length + 1); i++) {
+        for (int i = 0; i < (this.sentences[currentPointer]._text.Length + 1); i++) {
             if (skip) {
                 break;
             }
 
-            textBox.text = sentences[currentPointer].text.Substring(0, i);
+            textBox.text = sentences[currentPointer]._text.Substring(0, i);
             /* TO DO - Add sound? */
 
-            yield return new WaitForSeconds(sentences[currentPointer].speed);
+            yield return new WaitForSeconds(sentences[currentPointer]._speed);
         }
 
         // If skip == true && dialogue is not done playing
-        textBox.text = sentences[currentPointer].text;
+        textBox.text = sentences[currentPointer]._text;
         skip = true;
 
-        yield return new WaitForSeconds(sentences[currentPointer].waitTime);
+        yield return new WaitForSeconds(sentences[currentPointer]._waitTime);
 
         NextText();
     }
