@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundManager : MonoBehaviour {
+public class SoundManager {
 
     public AudioSource footsteps;
     public AudioSource ghostTalk;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 
-public class MusicManager : MonoBehaviour {
+public class MusicManager {
 	private Dictionary<string, AudioClip> trackMap;
 	private AudioSource musiceSource;
 
