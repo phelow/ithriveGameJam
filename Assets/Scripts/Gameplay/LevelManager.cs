@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
+    public static LevelManager s_instance;
+
     public enum LevelStage
     {
         Day, // Talk to relatives
@@ -16,8 +18,14 @@ public class LevelManager : MonoBehaviour {
 
     private LevelStage _currentStage = LevelStage.Day;
 
-    void Start()
+    void Awake()
     {
+        s_instance = this;
+    }
+
+    public LevelStage GetStage()
+    {
+        return _currentStage;
     }
 
     public void AdvanceState()
@@ -26,14 +34,14 @@ public class LevelManager : MonoBehaviour {
         {
             case LevelStage.Day:
                 _currentStage = LevelStage.Night;
+                SetSpritesToGhosts();
                 break;
             case LevelStage.Night:
-                SetSpritesToGhosts();
+                SetSpritesToUrns();
                 _currentStage = LevelStage.Morning;
                 break;
             case LevelStage.Morning:
                 CheckForEndOfGame();
-                SetSpritesToUrns();
                 _currentStage = LevelStage.Day;
                 break;
         }
@@ -46,7 +54,7 @@ public class LevelManager : MonoBehaviour {
         Urn[] urns = GameObject.FindObjectsOfType<Urn>();
         foreach (Urn urn in urns)
         {
-            urn.SetSpriteToGhost();
+            urn.EnterGhostmode();
         }
     }
 

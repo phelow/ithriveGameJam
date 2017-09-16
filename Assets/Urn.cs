@@ -17,15 +17,26 @@ public class Urn : MonoBehaviour
     private Sprite _urnSprite;
 
     private static Urn _heldObject;
+    [SerializeField]
+    List<TextAsset> _ghostDialogFileList;
+    List<Dialogue> _ghostDialogList;
+
+    Dialogue _dialog;
+
     // Use this for initialization
     void Start()
     {
-
+        _ghostDialogList = new List<Dialogue>();
+        foreach (TextAsset text in _ghostDialogFileList)
+        {
+            _ghostDialogList.Add(Dialogue.DialogueFactory(text));
+        }
     }
 
-    public void SetSpriteToGhost()
+    public void EnterGhostmode()
     {
         _spriteRenderer.sprite = _ghostSprite;
+        _dialog = _ghostDialogList[Random.Range(0, _ghostDialogList.Count)];
     }
 
     public void SetSpriteToUrn()
@@ -61,6 +72,12 @@ public class Urn : MonoBehaviour
 
     public void InteractWithHoldable(Urn holdable)
     {
+        if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Night)
+        {
+            TypeWriter.s_instance.PlayDialogue(_dialog);
+            return;
+        }
+
         if (_heldObject == null)
         {
             _heldObject = holdable;
