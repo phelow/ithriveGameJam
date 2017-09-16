@@ -11,12 +11,13 @@ public class BootLoader : MonoBehaviour {
         Global.isBuild = true;
 
         /* Find UI Elements */
-        GameObject dialogueUI = GameObject.Find("Dialogue_UI");
+        GameObject dialogueUI = GameObject.Find("UI_Dialogue");
+        GameObject musicSource = GameObject.Find("Audio_Music");
 
         /* Create Managers */
         Global.storyManager = new StoryManager();
-        //Global.musicManager = new MusicManager();
-        //Global.soundManager = new SoundManager();
+        Global.musicManager = new MusicManager(musicSource);
+        Global.soundManager = new SoundManager();
         Global.dialogueManager = new DialogueManager(dialogueUI);
 
         /* Load Title Scene */

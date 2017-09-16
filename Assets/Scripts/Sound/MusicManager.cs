@@ -4,21 +4,20 @@ using System;
 
 public class MusicManager {
 	private Dictionary<string, AudioClip> trackMap;
-	private AudioSource musiceSource;
+	private AudioSource musicSource;
 
-	public MusicManager() {
-		// Need to initialize music source here
-		musiceSource = ((GameObject)GameObject.Instantiate(Resources.Load(""))).GetComponent<AudioSource>();
+	public MusicManager(GameObject musicSourceObj) {
+        musicSource = musicSourceObj.GetComponent<AudioSource>();
 		trackMap = new Dictionary<string, AudioClip> ();
 	}
 
 	public void Play(string name) {
-        musiceSource.clip = trackMap[name];
-        musiceSource.Play();
+        musicSource.clip = trackMap[name];
+        musicSource.Play();
 	}
 
 	public void Stop() {
-        musiceSource.Stop();
+        musicSource.Stop();
 	}
 
 	public void Unload() {
