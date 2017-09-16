@@ -35,6 +35,12 @@ public class Urn : MonoBehaviour
 
     public void EnterGhostmode()
     {
+        if(_heldObject != null)
+        {
+            _heldObject.SetColor(Color.white);
+            _heldObject = null;
+        }
+
         _spriteRenderer.sprite = _ghostSprite;
         _dialog = _ghostDialogList[Random.Range(0, _ghostDialogList.Count)];
     }
