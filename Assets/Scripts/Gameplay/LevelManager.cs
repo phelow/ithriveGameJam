@@ -15,7 +15,6 @@ public class LevelManager : MonoBehaviour {
 
     [SerializeField]
     private TextMeshPro _stageText;
-
     private LevelStage _currentStage = LevelStage.Day;
 
     void Awake()

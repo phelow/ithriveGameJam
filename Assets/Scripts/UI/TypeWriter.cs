@@ -14,15 +14,19 @@ public class TypeWriter : MonoBehaviour {
 
     private bool playing = false;
     private bool skip = false;
+    private bool _animateTextStarted = false;
+
+    private IEnumerator AnimateTextRoutine;
 
     // Use this for initialization
     void Awake () {
         s_instance = this;
+        AnimateTextRoutine = AnimateText();
         dialoguePanel.SetActive(false);
     }
 
     private void LateUpdate () {
-        if (playing == true && Input.GetButtonDown("Fire1")) {
+        if (playing == true && Input.GetKeyDown(KeyCode.Space)) {
             if (skip == false) {
                 Global.dialogueManager.FinishCurrent();
             } else {
@@ -49,8 +53,14 @@ public class TypeWriter : MonoBehaviour {
 
             /* TO DO - Animate this transition */
             dialoguePanel.SetActive(true);
-            
-            StartCoroutine(AnimateText());
+            if (_animateTextStarted)
+            {
+                StopCoroutine(AnimateTextRoutine);
+                AnimateTextRoutine = AnimateText();
+            }
+
+            skip = false;
+            StartCoroutine(AnimateTextRoutine);
             return true;
         } else {
             Debug.LogError("TypeWriter started typing with no sentences!");
@@ -59,6 +69,7 @@ public class TypeWriter : MonoBehaviour {
     }
 
     IEnumerator AnimateText () {
+        _animateTextStarted = true;
         for (int i = 0; i < (this.sentences[currentPointer]._text.Length + 1); i++) {
             if (skip) {
                 break;
@@ -72,7 +83,6 @@ public class TypeWriter : MonoBehaviour {
 
         // If skip == true && dialogue is not done playing
         textBox.text = sentences[currentPointer]._text;
-        skip = true;
 
         yield return new WaitForSeconds(sentences[currentPointer]._waitTime);
 
