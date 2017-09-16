@@ -28,15 +28,35 @@ public class LevelManager : MonoBehaviour {
                 _currentStage = LevelStage.Night;
                 break;
             case LevelStage.Night:
+                SetSpritesToGhosts();
                 _currentStage = LevelStage.Morning;
                 break;
             case LevelStage.Morning:
                 CheckForEndOfGame();
+                SetSpritesToUrns();
                 _currentStage = LevelStage.Day;
                 break;
         }
 
         _stageText.text = _currentStage.ToString();
+    }
+
+    public void SetSpritesToGhosts()
+    {
+        Urn[] urns = GameObject.FindObjectsOfType<Urn>();
+        foreach (Urn urn in urns)
+        {
+            urn.SetSpriteToGhost();
+        }
+    }
+
+    public void SetSpritesToUrns()
+    {
+        Urn[] urns = GameObject.FindObjectsOfType<Urn>();
+        foreach (Urn urn in urns)
+        {
+            urn.SetSpriteToUrn();
+        }
     }
 
     public void CheckForEndOfGame()

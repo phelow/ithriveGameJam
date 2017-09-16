@@ -10,11 +10,27 @@ public class Urn : MonoBehaviour
     [SerializeField]
     private Pedestal _pedestal;
 
+    [SerializeField]
+    private Sprite _ghostSprite;
+
+    [SerializeField]
+    private Sprite _urnSprite;
+
     private static Urn _heldObject;
     // Use this for initialization
     void Start()
     {
 
+    }
+
+    public void SetSpriteToGhost()
+    {
+        _spriteRenderer.sprite = _ghostSprite;
+    }
+
+    public void SetSpriteToUrn()
+    {
+        _spriteRenderer.sprite = _urnSprite;
     }
 
     // Update is called once per frame
