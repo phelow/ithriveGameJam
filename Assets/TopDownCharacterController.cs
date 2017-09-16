@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TopDownCharacterController : MonoBehaviour {
+    public static TopDownCharacterController s_instance;
+
     [SerializeField]
     private Rigidbody2D _rigidbody;
 
@@ -11,10 +13,67 @@ public class TopDownCharacterController : MonoBehaviour {
 
     [SerializeField]
     private float _movementMultiplier = 100.0f;
-	// Use this for initialization
-	void Start () {
+
+    private Holdable _heldObject;
+    private Interactable _triggeredObject;
+
+    void Awake()
+    {
+        s_instance = this;
+    }
+
+    // Use this for initialization
+    void Start () {
         StartCoroutine(MovePlayer());
+        StartCoroutine(WaitForInteraction());
 	}
+
+    public void SetTriggeredObject(Interactable triggeredObject)
+    {
+        _triggeredObject = triggeredObject;
+    }
+
+    public void PickupObject(Holdable holdable)
+    {
+        _heldObject = holdable;
+        holdable.transform.parent = this.transform;
+    }
+
+    private void DropHeldObject()
+    {
+        _heldObject.transform.parent = null;
+        _heldObject = null;
+    }
+
+    private IEnumerator WaitForInteraction()
+    {
+        while (true)
+        {
+            yield return new WaitForEndOfFrame();
+
+            if(!Input.GetKeyDown(KeyCode.Space) && !Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
+            {
+                continue;
+            }
+
+            if(_triggeredObject == null && _heldObject == null)
+            {
+                continue;
+            }
+
+            if(_triggeredObject != null)
+            {
+                _triggeredObject.OnInteraction();
+                continue;
+            }
+
+            if(_heldObject != null)
+            {
+                DropHeldObject();
+            }
+
+        }
+    }
 
     private IEnumerator MovePlayer()
     {
@@ -39,9 +98,7 @@ public class TopDownCharacterController : MonoBehaviour {
             {
                 _rigidbody.AddForce(movement.normalized * _movementMultiplier * Time.deltaTime);
             }
-
-            Debug.Log(movement);
-
+            
             yield return new WaitForEndOfFrame();
         }
     }

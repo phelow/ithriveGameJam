@@ -22,6 +22,7 @@ public class Interactable : MonoBehaviour {
         if(col.tag == "Player")
         {
             _triggered = true;
+            TopDownCharacterController.s_instance.SetTriggeredObject(this);
             _renderer.color = Color.red;
         }
     }
@@ -31,11 +32,12 @@ public class Interactable : MonoBehaviour {
         if (col.tag == "Player")
         {
             _triggered = false;
+            TopDownCharacterController.s_instance.SetTriggeredObject(null);
             _renderer.color = Color.white;
         }
     }
 
-    protected virtual void OnInteraction()
+    public virtual void OnInteraction()
     {
         Debug.Log("Base class interactable called");
     }
