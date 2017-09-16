@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/Hello Wolrd.unity
-  isLoaded: 1
-  isActive: 1
