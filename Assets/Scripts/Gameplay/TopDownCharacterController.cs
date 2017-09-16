@@ -17,6 +17,8 @@ public class TopDownCharacterController : MonoBehaviour {
     private Holdable _heldObject;
     private Interactable _triggeredObject;
 
+    private bool _shouldInteract;
+
     void Awake()
     {
         s_instance = this;
@@ -51,11 +53,12 @@ public class TopDownCharacterController : MonoBehaviour {
         {
             yield return new WaitForEndOfFrame();
 
-            if(!Input.GetKeyDown(KeyCode.Space) && !Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
+            if(!_shouldInteract)
             {
                 continue;
             }
 
+            _shouldInteract = false;
             if(_triggeredObject == null && _heldObject == null)
             {
                 continue;
@@ -105,6 +108,9 @@ public class TopDownCharacterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+        {
+            _shouldInteract = true;
+        }
 	}
 }
