@@ -22,19 +22,25 @@ public class TopDownCharacterController : MonoBehaviour {
         {
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            float horizontal = Mathf.Abs(Input.GetAxis("Horizontal"));
-            float vertical = Mathf.Abs(Input.GetAxis("Vertical"));
-
-            if ( vertical > _axisMinimum || horizontal > _axisMinimum)
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            Vector2 movement = Vector2.zero;
+            
+            if ( Mathf.Abs(vertical) > _axisMinimum || Mathf.Abs(horizontal) > _axisMinimum)
             {
-                worldPos = new Vector3(horizontal * _movementMultiplier, vertical * _movementMultiplier, 0.0f);
+                movement = new Vector2(horizontal, vertical);
+            }
+            else
+            {
+                movement = (new Vector2(worldPos.x, worldPos.y) - new Vector2(transform.position.x, transform.position.y));
             }
                      
-            Vector2 movement = (new Vector2(worldPos.x, worldPos.y) - new Vector2(transform.position.x, transform.position.y));
             if (movement.magnitude > .03f)
             {
                 _rigidbody.AddForce(movement.normalized * _movementMultiplier * Time.deltaTime);
             }
+
+            Debug.Log(movement);
 
             yield return new WaitForEndOfFrame();
         }

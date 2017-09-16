@@ -229,7 +229,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1774525238}
   _axisMinimum: 0.01
-  _movementMultiplier: 100
+  _movementMultiplier: 1000
 --- !u!58 &1774525240
 CircleCollider2D:
   m_ObjectHideFlags: 0
