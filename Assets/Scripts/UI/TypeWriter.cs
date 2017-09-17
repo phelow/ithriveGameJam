@@ -14,7 +14,7 @@ public class TypeWriter : MonoBehaviour
     private int currentPointer;
 
     private bool playing = false;
-    private bool skip = false;
+    private bool skip = false; 
     private bool _animateTextStarted = false;
 
     private Color _backgroundColorA;
