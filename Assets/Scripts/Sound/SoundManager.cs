@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource _soundSource;
+    public AudioSource _dialogSource;
     public AudioSource _musicSource;
     public static SoundManager instance = null;
 
@@ -23,17 +24,25 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void Play(AudioClip clip)
+    public void PlaySingleSound(AudioClip clip)
     {
         _soundSource.clip = clip;
         _soundSource.Play();
     }
 
-    public void PlayRandom(List<AudioClip> L_clip)
+
+    public void PlayRandomSound(List<AudioClip> L_clip)
     {
         int random = Random.Range(0, L_clip.Count);
         _soundSource.clip = L_clip[random];
         _soundSource.Play();
+    }
+
+    public void PlayDialog(List<AudioClip> L_clip)
+    {
+        int random = Random.Range(0, L_clip.Count);
+        _dialogSource.PlayOneShot(L_clip[random]);
+
     }
 
     public void Stop()
@@ -42,3 +51,5 @@ public class SoundManager : MonoBehaviour
     }
 
 }
+
+
