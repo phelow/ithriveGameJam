@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4946497254485258}
   - component: {fileID: 33625303363269882}
-  - component: {fileID: 136840937378657030}
   - component: {fileID: 23190416057736060}
   - component: {fileID: 114229527878136934}
+  - component: {fileID: 61491806983838410}
   m_Layer: 0
   m_Name: urn
   m_TagString: Untagged
@@ -82,6 +82,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546193108189858}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &61491806983838410
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546193108189858}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
 --- !u!114 &114229527878136934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,16 +123,3 @@ MonoBehaviour:
   _soundSwap:
   - {fileID: 8300000, guid: c9086401617a4c14ab9faf8bd18e86c6, type: 3}
   - {fileID: 8300000, guid: f3e39f4b9ecb6c246b1806d9ab1ac898, type: 3}
---- !u!136 &136840937378657030
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546193108189858}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
