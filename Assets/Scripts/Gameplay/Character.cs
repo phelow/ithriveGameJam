@@ -29,7 +29,7 @@ public class Character : MonoBehaviour {
         {
             _dialogList.Add(Dialogue.DialogueFactory(text));
         }
-
+        _renderer = GetComponent<SpriteRenderer>();
         StartCoroutine(InterpolateCharacters());
     }
 
@@ -74,6 +74,11 @@ public class Character : MonoBehaviour {
    
 
     private void OnMouseDown()
+    {
+        Talk();
+    }
+
+    public void Talk()
     {
         TypeWriter.s_instance.PlayDialogue(_dialog);
         SoundManager.instance.Play(_audioClips[Random.Range(0, _audioClips.Count)]);
