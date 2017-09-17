@@ -8,7 +8,7 @@ public class Urn : MonoBehaviour
     //private GameObject _character;
 
     [SerializeField]
-    private Pedestal _pedestal;
+    public Pedestal _pedestal;
 
     //[SerializeField]
     //private Sprite _ghostSprite;
@@ -17,23 +17,35 @@ public class Urn : MonoBehaviour
     //private Sprite _urnSprite;
 
     private static Urn _heldObject;
-    
+    private Material _material;
 
-    
+    public Color _originalColor;
 
     // Use this for initialization
-  
+    private void Awake()
+    {
+        _material = GetComponent<Renderer>().material;
+    }
 
     private void ClearHeldObject()
     {
-        if (_heldObject != null)
-        {
-            //_heldObject.SetColor(Color.white);
-            _heldObject = null;
-        }
+        Deselect();
+        _heldObject = null;
     }
 
-    
+    private void Select()
+    {
+        
+        _originalColor = _material.color;
+        _material.color = Color.yellow;
+        
+    }
+
+    private void Deselect()
+    {
+        GetComponent<Renderer>().material.color = _originalColor;
+        
+    }
 
     public void OnMouseDown()
     {
@@ -61,16 +73,19 @@ public class Urn : MonoBehaviour
 
     public void InteractWithHoldable(Urn holdable)
     {
-        Debug.Log("CLICKED ON: " + gameObject.name);
+        
         if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Morning)
         {
-            Debug.Log("CLICKED ON: " + gameObject.name);
+        
             if (_heldObject == null)
             {
                 _heldObject = holdable;
-                //_heldObject.SetColor(Color.yellow);
+                
+                Select();
                 return;
             }
+
+            _heldObject.ClearHeldObject();
 
             Pedestal savedPedestal = holdable._pedestal;
             holdable._pedestal = _heldObject._pedestal;
@@ -79,9 +94,6 @@ public class Urn : MonoBehaviour
             Vector3 newPosition = _heldObject.transform.position;
             _heldObject.transform.position = holdable.transform.position;
             holdable.transform.position = newPosition;
-            //_heldObject.SetColor(Color.white);
-            //holdable.SetColor(Color.white);
-            _heldObject = null;
         }
     }
 }

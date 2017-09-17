@@ -1,2 +1,2 @@
-.1~.3~"This is some text"
+.005~25~This is some text and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more and more
 .1~.3~"This is also some text"
