@@ -26,10 +26,10 @@ public class Character : MonoBehaviour {
     private float _startingOffset;
 
     [SerializeField]
-    private Color _characterBaseColor;
+    private Color _characterBaseColor = Color.black;
 
     [SerializeField]
-    private float _colorInterpolationTime;
+    private float _colorInterpolationTime = 1.0f;
 
     private Color _characterActiveColor;
 
@@ -83,16 +83,15 @@ public class Character : MonoBehaviour {
                 tPassed += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
-
-            tPassed = 0.0f;
-            while (tPassed < _interpolationTime)
+            
+            while (tPassed > 0.0f)
             {
                 _renderer.color = Color.Lerp(
-                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _minimumAlpha), 
                     new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _maximumAlpha), 
+                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _minimumAlpha), 
                     tPassed / _interpolationTime);
 
-                tPassed += Time.deltaTime;
+                tPassed -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
 
