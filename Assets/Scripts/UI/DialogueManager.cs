@@ -9,6 +9,7 @@ public class DialogueManager {
         this.dialogueUI = dialogueUI.GetComponent<TypeWriter>();
     }
 
+
     public bool PlayDialogue (Dialogue d) {
         return dialogueUI.PlayDialogue(d);
     }

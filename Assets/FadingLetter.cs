@@ -36,6 +36,11 @@ public class FadingLetter : MonoBehaviour
         int iterations = 1;
         do
         {
+            if (!TypeWriter.s_instance.IsTextPlaying())
+            {
+                break;
+            }
+
             Array values = Enum.GetValues(typeof(FadeOutBehavior));
             System.Random random = new System.Random();
             randomBehavior = (FadeOutBehavior)values.GetValue(random.Next(values.Length));
@@ -51,7 +56,7 @@ public class FadingLetter : MonoBehaviour
                     yield return JitterRoutine();
                     break;
                 case FadeOutBehavior.FadeOut:
-                    yield return JitterRoutine();
+                    yield return RotateRoutine();
                     break;
             }
 
@@ -63,11 +68,33 @@ public class FadingLetter : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    private IEnumerator RotateRoutine()
+    {
+        float tPassed = 0.0f;
+        float targetTime = UnityEngine.Random.Range(0.3f, 1.5f);
+        Quaternion targetRotation = Quaternion.EulerRotation(0.0f, 0.0f, UnityEngine.Random.Range(-360.0f, 360.0f));
+
+        while (tPassed < targetTime)
+        {
+            if (!TypeWriter.s_instance.IsTextPlaying())
+            {
+                break;
+            }
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, tPassed / targetTime);
+            tPassed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     private IEnumerator JitterRoutine()
     {
         float tLeft = 1.0f;
         while (tLeft > 0.0f)
         {
+            if (!TypeWriter.s_instance.IsTextPlaying())
+            {
+                break;
+            }
             _textMesh.transform.position += new Vector3(
                 UnityEngine.Random.RandomRange(-_spookiness, _spookiness),
                 UnityEngine.Random.RandomRange(-_spookiness, _spookiness),
@@ -82,6 +109,10 @@ public class FadingLetter : MonoBehaviour
         float tLeft = 1.0f * Mathf.Min(_spookiness,5.0f);
         while (tLeft > 0.0f)
         {
+            if (!TypeWriter.s_instance.IsTextPlaying())
+            {
+                break;
+            }
             tLeft -= .4f;
             _textMesh.alpha = 0.0f;
             yield return new WaitForSeconds(UnityEngine.Random.Range(.3f, .5f));
@@ -95,6 +126,10 @@ public class FadingLetter : MonoBehaviour
         float tLeft = 1.0f * _spookiness;
         while (tLeft > 0.0f)
         {
+            if (!TypeWriter.s_instance.IsTextPlaying())
+            {
+                break;
+            }
             _textMesh.alpha = Mathf.Lerp(.5f, 0.0f, Mathf.PingPong(tLeft * _spookiness, 1.0f));
             tLeft -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
