@@ -18,7 +18,8 @@ public class Dialogue {
         return new Dialogue(parsedSentences);
     }
 
-    public Dialogue (List<Sentence> sentences) {
+    public Dialogue (List<Sentence> sentences)
+    {
         this._sentences = sentences;
     }
 }

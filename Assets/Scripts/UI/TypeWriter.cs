@@ -152,19 +152,31 @@ public class TypeWriter : MonoBehaviour
             if (typedText.Length > 0)
             {
                 int substringStartIndex = Random.Range(0, i);
-                float spaceOutAmount = 500.0f;
+                float spaceOutAmount = Screen.height;
                 GameObject createdText = GameObject.Instantiate(
                     _ghostLetter,
                     this.textBox.transform.position + new Vector3(Random.Range(-spaceOutAmount, spaceOutAmount), Random.Range(-spaceOutAmount, spaceOutAmount), 0.0f),
                     this.transform.rotation,
                     this.transform);
+                int charactersCreated = (int)Random.Range(1.0f, sentences[currentPointer]._spookiness);
 
-                int createdTextStringLength = Random.Range(0, typedText.Length - substringStartIndex);
+                for (int c = 0; c < charactersCreated; c++)
+                {
+                    if (sentences[currentPointer]._words.Length <= 1)
+                    {
+                        int createdTextStringLength = Random.Range(0, typedText.Length - substringStartIndex);
 
-                string createdTextString = typedText.Substring(
-                            substringStartIndex,
-                            createdTextStringLength);
-                createdText.GetComponentInChildren<TextMeshProUGUI>().SetText(createdTextString);
+                        string createdTextString = typedText.Substring(
+                                    substringStartIndex,
+                                    createdTextStringLength);
+                        createdText.GetComponentInChildren<TextMeshProUGUI>().SetText(createdTextString);
+                    }
+                    else
+                    {
+
+                        createdText.GetComponentInChildren<TextMeshProUGUI>().SetText(sentences[currentPointer]._words[Random.Range(0, sentences[currentPointer]._words.Length)]);
+                    }
+                }
             }
 
             string text = string.Format("<{0}>{1}</color><{2}>{3}</color>",
