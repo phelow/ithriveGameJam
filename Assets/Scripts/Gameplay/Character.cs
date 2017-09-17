@@ -118,6 +118,11 @@ public class Character : MonoBehaviour {
 
     public void Talk()
     {
+        if (TypeWriter.s_instance.IsTextPlaying())
+        {
+            return;
+        }
+
         TypeWriter.s_instance.PlayDialogue(_dialog);
 
 

@@ -17,7 +17,7 @@ public class Urn : MonoBehaviour
     //private Sprite _urnSprite;
 
     private static Urn _heldObject;
-    private Material _material;
+    private SpriteRenderer spriteRenderer;
 
     public Color _originalColor;
 
@@ -27,7 +27,7 @@ public class Urn : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        _material = GetComponent<Renderer>().material;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void ClearHeldObject()
@@ -39,8 +39,8 @@ public class Urn : MonoBehaviour
     private void Select()
     {
         
-        _originalColor = _material.color;
-        _material.color = Color.yellow;
+        _originalColor = spriteRenderer.color;
+        spriteRenderer.color = Color.yellow;
         
     }
 
