@@ -31,6 +31,7 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private float _colorInterpolationTime = 1.0f;
 
+    [SerializeField]
     private Color _characterActiveColor;
 
     void Awake()
@@ -52,14 +53,14 @@ public class Character : MonoBehaviour {
             float tPassed = 0.0f;
             while(tPassed < _colorInterpolationTime)
             {
-                _characterActiveColor = Color.Lerp(Color.white, _characterActiveColor, tPassed / _colorInterpolationTime);
+                _characterActiveColor = Color.Lerp(Color.white, _characterBaseColor, tPassed / _colorInterpolationTime);
                 tPassed += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
             
             while (tPassed > 0.0f)
             {
-                _characterActiveColor = Color.Lerp(Color.white, _characterActiveColor, tPassed / _colorInterpolationTime);
+                _characterActiveColor = Color.Lerp(Color.white, _characterBaseColor, tPassed / _colorInterpolationTime);
                 tPassed -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
