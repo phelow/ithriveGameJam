@@ -128,6 +128,7 @@ public class TypeWriter : MonoBehaviour
             Random.Range(0.1f, 1.0f),
             Random.Range(0.1f, 1.0f));
         _clearOffset = Random.Range(0.0f, 1.0f);
+        float whiteOffset = Random.Range(0.0f, 1.0f);
 
         for (int i = 0; i < (this.sentences[currentPointer]._text.Length); i++)
         {
@@ -141,12 +142,15 @@ public class TypeWriter : MonoBehaviour
             string typedText = currentSentence.Substring(0, i);
             string trimmedString = currentSentence.Substring(i);
 
-            Color foregroundColor = Color.green;
+            Color whiteShade = Color.Lerp(
+                Color.clear,
+                Color.white,
+                .6f + Mathf.PingPong(Time.time + whiteOffset, .4f));
 
             string text = string.Format("<{0}>{1}</color><{2}>{3}</color>",
-                ToHex(Color.white.r, Color.white.g, Color.white.b), 
+                ToHex(whiteShade.r, whiteShade.g, whiteShade.b),
                 typedText,
-                ToHex(_backgroundColor.r, _backgroundColor.g, _backgroundColor.b, _backgroundColor.a), 
+                ToHex(_backgroundColor.r, _backgroundColor.g, _backgroundColor.b, _backgroundColor.a),
                 trimmedString);
 
             textBox.text = text;
