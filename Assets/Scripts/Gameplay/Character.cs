@@ -117,7 +117,26 @@ public class Character : MonoBehaviour {
     public void Talk()
     {
         TypeWriter.s_instance.PlayDialogue(_dialog);
+
+
         LevelManager.s_instance.SetTalking(_renderer.sprite);
-        SoundManager.instance.Play(_audioClips[Random.Range(0, _audioClips.Count)]);
     }
+
+
+
+    public void Update()
+    {
+        if (TypeWriter.s_instance.IsTextPlaying())
+        {
+            if (!SoundManager.instance._dialogSource.isPlaying)
+            {
+                SoundManager.instance.PlayDialog(_audioClips);
+            }
+        }
+        else
+        {
+            SoundManager.instance._dialogSource.Stop();
+        }
+    }
+
 }
