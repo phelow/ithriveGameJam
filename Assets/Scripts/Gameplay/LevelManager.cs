@@ -135,7 +135,6 @@ public class LevelManager : MonoBehaviour
         if (victory)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
-            SoundManager.instance._musicSource.Stop();
         }
     }
 
