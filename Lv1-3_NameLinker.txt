@@ -1,7 +1,7 @@
 ghost_1 = April, 1;
 ghost_3 = Dad, 1,2;
 ghost_6 = Teacher, 1;
-ghost_4 = Mason, 2;
+ghost_4 = Mason (the boy), 2,3;
 ghost_5 = Mafia, 2;
 ghost_7 = Liverty (the girl), 3;
 ghost_8 = Grandma, 3;
