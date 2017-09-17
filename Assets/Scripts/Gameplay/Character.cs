@@ -25,6 +25,14 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private float _startingOffset;
 
+    [SerializeField]
+    private Color _characterBaseColor;
+
+    [SerializeField]
+    private float _colorInterpolationTime;
+
+    private Color _characterActiveColor;
+
     void Awake()
     {
         _dialogList = new List<Dialogue>();
@@ -34,6 +42,28 @@ public class Character : MonoBehaviour {
         }
         _renderer = GetComponent<SpriteRenderer>();
         StartCoroutine(InterpolateCharacters());
+        StartCoroutine(UpdateActiveColor());
+    }
+
+    private IEnumerator UpdateActiveColor()
+    {
+        while (true)
+        {
+            float tPassed = 0.0f;
+            while(tPassed < _colorInterpolationTime)
+            {
+                _characterActiveColor = Color.Lerp(Color.white, _characterActiveColor, tPassed / _colorInterpolationTime);
+                tPassed += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            
+            while (tPassed > 0.0f)
+            {
+                _characterActiveColor = Color.Lerp(Color.white, _characterActiveColor, tPassed / _colorInterpolationTime);
+                tPassed -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
     }
 
     private IEnumerator InterpolateCharacters()
@@ -46,8 +76,8 @@ public class Character : MonoBehaviour {
             while(tPassed < _interpolationTime)
             {
                 _renderer.color = Color.Lerp(
-                    new Color(Color.white.r, Color.white.g, Color.white.b, _maximumAlpha), 
-                    new Color(Color.white.r, Color.white.g, Color.white.b, _minimumAlpha), 
+                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _maximumAlpha), 
+                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _minimumAlpha), 
                     tPassed / _interpolationTime);
 
                 tPassed += Time.deltaTime;
@@ -58,8 +88,8 @@ public class Character : MonoBehaviour {
             while (tPassed < _interpolationTime)
             {
                 _renderer.color = Color.Lerp(
-                    new Color(Color.white.r, Color.white.g, Color.white.b, _minimumAlpha), 
-                    new Color(Color.white.r, Color.white.g, Color.white.b, _maximumAlpha), 
+                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _minimumAlpha), 
+                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _maximumAlpha), 
                     tPassed / _interpolationTime);
 
                 tPassed += Time.deltaTime;
