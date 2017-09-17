@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private List<Character> persons;
 
+    [SerializeField]
+    private Button _advanceButton;
 
     void Awake()
     {
@@ -30,6 +32,11 @@ public class LevelManager : MonoBehaviour {
         ShowCharacters(persons);
         HideCharacters(ghosts);
 
+    }
+
+    public void SetAdvanceButtonVisible(bool shouldBeOff)
+    {
+        _advanceButton.interactable = !shouldBeOff;
     }
 
     private void Start()
@@ -45,8 +52,7 @@ public class LevelManager : MonoBehaviour {
 
     public void AdvanceState()
     {
-        
-        switch(_currentStage)
+        switch (_currentStage)
         {
             case LevelStage.Day:
                 _currentStage = LevelStage.Night;

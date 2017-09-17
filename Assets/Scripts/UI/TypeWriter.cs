@@ -14,7 +14,7 @@ public class TypeWriter : MonoBehaviour
     private int currentPointer;
 
     private bool playing = false;
-    private bool skip = false;
+    private bool skip = false; 
     private bool _animateTextStarted = false;
 
     private Color _backgroundColorA;
@@ -75,6 +75,7 @@ public class TypeWriter : MonoBehaviour
         if (this.sentences != null)
         {
             playing = true;
+            LevelManager.s_instance.SetAdvanceButtonVisible(playing);
             currentPointer = 0;
 
             /* TO DO - Animate this transition */
@@ -198,6 +199,11 @@ public class TypeWriter : MonoBehaviour
         NextText();
     }
 
+    public bool IsTextPlaying()
+    {
+        return playing;
+    }
+
     public void NextText()
     {
         StopAllCoroutines();
@@ -215,6 +221,7 @@ public class TypeWriter : MonoBehaviour
 
             /* FINISHED PLAYING */
             playing = false;
+            LevelManager.s_instance.SetAdvanceButtonVisible(playing);
         }
     }
 
