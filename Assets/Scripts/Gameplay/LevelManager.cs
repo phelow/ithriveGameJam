@@ -4,7 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
     public static LevelManager s_instance;
 
     public enum LevelStage
@@ -14,8 +15,6 @@ public class LevelManager : MonoBehaviour {
         Morning // Move the urns
     }
 
-    [SerializeField]
-    private TextMeshPro _stageText;
     private LevelStage _currentStage = LevelStage.Day;
 
     [SerializeField]
@@ -45,14 +44,22 @@ public class LevelManager : MonoBehaviour {
 
     public void Awake()
     {
+        Button btn = GetComponent<Button>();
+        btn.onClick.AddListener(AdvanceState);
+        //_music.Play("Day Loop");
         s_instance = this;
+    }
+
+    public void Start()
+    {
+
         ShowCharacters(persons);
         HideCharacters(ghosts);
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
     {
-        if(_advanceButton == null)
+        if (_advanceButton == null)
         {
             return;
         }
@@ -60,12 +67,6 @@ public class LevelManager : MonoBehaviour {
         _advanceButton.interactable = !shouldBeOff;
     }
 
-    private void Start()
-    {
-        Button btn = GetComponent<Button>();
-        btn.onClick.AddListener(AdvanceState);
-        //_music.Play("Day Loop");
-    }
 
     public LevelStage GetStage()
     {
@@ -106,7 +107,7 @@ public class LevelManager : MonoBehaviour {
 
     private void HideCharacters(List<Character> chars)
     {
-        foreach(var c in chars)
+        foreach (var c in chars)
         {
             c.gameObject.SetActive(false);
         }
@@ -126,7 +127,7 @@ public class LevelManager : MonoBehaviour {
     {
         Urn[] urns = GameObject.FindObjectsOfType<Urn>();
         bool victory = true;
-        foreach(Urn urn in urns)
+        foreach (Urn urn in urns)
         {
             victory &= urn.VictoryCheck();
         }
@@ -140,6 +141,7 @@ public class LevelManager : MonoBehaviour {
 
     public void SetTalking(Sprite sprite)
     {
+
         talking.sprite = sprite;
     }
 

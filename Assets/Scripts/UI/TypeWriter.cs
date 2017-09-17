@@ -14,7 +14,7 @@ public class TypeWriter : MonoBehaviour
     private int currentPointer;
 
     private bool playing = false;
-    private bool skip = false; 
+    private bool skip = false;
     private bool _animateTextStarted = false;
 
     private Color _backgroundColorA;
@@ -133,7 +133,7 @@ public class TypeWriter : MonoBehaviour
             Random.Range(0.1f, 1.0f));
         _clearOffset = Random.Range(0.0f, 1.0f);
         float whiteOffset = Random.Range(0.0f, 1.0f);
-        if(currentPointer > this.sentences.Count)
+        if (currentPointer > this.sentences.Count)
         {
             currentPointer = 0;
         }
