@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212425707961357576}
   - component: {fileID: 114941638628474780}
   - component: {fileID: 61998863146313248}
+  - component: {fileID: 82307323608335538}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -67,6 +68,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 13.18, y: 18}
   m_EdgeRadius: 0
+--- !u!82 &82307323608335538
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650432405003212}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 30ee124c9691e1d4a82824b89c49afb3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114941638628474780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,7 +162,34 @@ MonoBehaviour:
   _dialogFileList:
   - {fileID: 4900000, guid: 45e573185b61d6c4d9ec2c7551d791fd, type: 3}
   _audioClips:
-  - {fileID: 8300000, guid: 997e59c2c9bfc2b4ba8a2e43881a11ed, type: 3}
+  - {fileID: 8300000, guid: a3fc5abc3253c1942a48658ace522961, type: 3}
+  - {fileID: 8300000, guid: a4f3b7939071f294097f617a57502c88, type: 3}
+  - {fileID: 8300000, guid: 7f645d94cf4df9940bbeea4eff730dbd, type: 3}
+  - {fileID: 8300000, guid: cd1a0b105557e324eb054c4f1ae108e5, type: 3}
+  - {fileID: 8300000, guid: 7446e5ecf7acf244f8c70ab394b3c4d7, type: 3}
+  - {fileID: 8300000, guid: 30ee124c9691e1d4a82824b89c49afb3, type: 3}
+  - {fileID: 8300000, guid: 3febc9ec273a1e648825be181ce47da3, type: 3}
+  - {fileID: 8300000, guid: ceabd77bcc8e8154881fc3bdfc60f8d2, type: 3}
+  - {fileID: 8300000, guid: 6d84daaede0a5534993306741668a236, type: 3}
+  - {fileID: 8300000, guid: 8c05e9872de93b343bfee43473ddd0cd, type: 3}
+  - {fileID: 8300000, guid: 91f509c9e3b24874caa4c82df70776e3, type: 3}
+  - {fileID: 8300000, guid: d1a6fba15130fa84cb03161ba2d647e5, type: 3}
+  - {fileID: 8300000, guid: 1b605aa121af4f646840123ad39e9f85, type: 3}
+  - {fileID: 8300000, guid: 86ec3f1c8f31c75468752313b7a65571, type: 3}
+  - {fileID: 8300000, guid: f8a19759d77117a47a86b3f25be47b9f, type: 3}
+  - {fileID: 8300000, guid: 40be3eefa51f65041a412eaf6f847ad5, type: 3}
+  - {fileID: 8300000, guid: 91a07847fbd79fd4f8d2f32638d43834, type: 3}
+  - {fileID: 8300000, guid: 7758c981839bd0242bc528055713aef9, type: 3}
+  - {fileID: 8300000, guid: a825cadd5e099a645b8e7b0322225b11, type: 3}
+  - {fileID: 8300000, guid: 1b605aa121af4f646840123ad39e9f85, type: 3}
+  - {fileID: 8300000, guid: 0cd2b5e7ebce72d4aa5b35d53d4a53db, type: 3}
+  - {fileID: 8300000, guid: 96ab6879fcabfde468fa7e47751520f6, type: 3}
+  - {fileID: 8300000, guid: 390eb65971f3bd346b411b519ea5137a, type: 3}
+  - {fileID: 8300000, guid: cbe906d4958e0634e9cdb9ff589816c7, type: 3}
+  - {fileID: 8300000, guid: 395aa039a335adb43a349a219f521955, type: 3}
+  - {fileID: 8300000, guid: c9c70b4528107d247b3b1c5d5145bceb, type: 3}
+  - {fileID: 8300000, guid: 995fcd7266cc92e49bf023b9876f7dbc, type: 3}
+  - {fileID: 8300000, guid: a592932d3573598458083784d9ea1a02, type: 3}
   _maximumAlpha: 1
   _minimumAlpha: 0.9
   _interpolationTime: 1
