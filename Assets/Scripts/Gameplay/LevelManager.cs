@@ -52,6 +52,11 @@ public class LevelManager : MonoBehaviour {
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
     {
+        if(_advanceButton == null)
+        {
+            return;
+        }
+
         _advanceButton.interactable = !shouldBeOff;
     }
 
@@ -97,9 +102,6 @@ public class LevelManager : MonoBehaviour {
                 ShowCharacters(persons);
                 break;
         }
-        
-
-        _stageText.text = _currentStage.ToString();
     }
 
     private void HideCharacters(List<Character> chars)

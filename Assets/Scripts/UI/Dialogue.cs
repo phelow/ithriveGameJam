@@ -12,7 +12,12 @@ public class Dialogue {
         List<Sentence> parsedSentences = new List<Sentence>();
         foreach(string line in lines)
         {
-            parsedSentences.Add(Sentence.ParseLine(line));
+            string trimmedLine = line.TrimEnd('\r');
+            if (string.IsNullOrEmpty(trimmedLine))
+            {
+                continue;
+            }
+            parsedSentences.Add(Sentence.ParseLine(trimmedLine));
         }
 
         return new Dialogue(parsedSentences);
