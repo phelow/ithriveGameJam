@@ -1,3 +1,3 @@
-.1~.3~1.0~"I wasn't that good with my courses during school, so I just dropped out in my freshman year of college."~
-.1~.3~1.0~"I was working at a lot of entrance positions... Well, to be honest I think the phrase “entrance level” is even a little bit too much to describe a cleaner who worked after mid-night in an Asian food restaurant."~
-.1~.3~1.0~"Then luckily one of my old friends introduced me to the police station."~
+.1~.3~1.0~I wasnt that good with my courses during school, so I just dropped out in my freshman year of college.~
+.1~.3~1.0~I was working at a lot of entrance positions... Well to be honest I think the phrase entrance level is even a little bit too much to describe a cleaner who worked after mid-night in an Asian food restaurant.~
+.1~.3~1.0~Then luckily one of my old friends introduced me to the police station.~

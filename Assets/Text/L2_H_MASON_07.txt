@@ -1,4 +1,4 @@
-.1~.3~2.0~"I would do anything to have him back in my arms."~
-.1~.3~2.0~"Mason sweetie, you deserved so much more than just I."~
-.1~.3~2.0~"You needed him, you needed a father."~
-.12~.3~1.0~"I am so sorry."~
+.1~.3~2.0~I would do anything to have him back in my arms.~
+.1~.3~2.0~Mason sweetie, you deserved so much more than just I.~
+.1~.3~2.0~You needed him, you needed a father.~
+.12~.3~1.0~I am so sorry.~

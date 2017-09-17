@@ -17,6 +17,7 @@ public class Urn : MonoBehaviour
     //private Sprite _urnSprite;
 
     private static Urn _heldObject;
+    [SerializeField]
     private SpriteRenderer spriteRenderer;
 
     public Color _originalColor;
@@ -27,7 +28,6 @@ public class Urn : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void ClearHeldObject()
@@ -69,7 +69,7 @@ public class Urn : MonoBehaviour
     public void SetColor(Color newColor)
     {
         
-        //_spriteRenderer.color = newColor;
+        //spriteRenderer.color = newColor;
     }
 
     
@@ -100,6 +100,8 @@ public class Urn : MonoBehaviour
             holdable._pedestal = _heldObject._pedestal;
             _heldObject._pedestal = savedPedestal;
 
+            holdable.spriteRenderer.color = Color.white;
+            _heldObject.spriteRenderer.color = Color.white;
             Vector3 newPosition = _heldObject.transform.position;
             _heldObject.StartCoroutine(_heldObject.MoveUrnToPosition(
                 _heldObject.transform.position, 

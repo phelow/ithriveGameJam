@@ -1,3 +1,3 @@
-.1~.3~1.0~"I'm sure she will meet my father in a place far beyond us, right?"~
-.1~.3~1.0~"Please, tell me I'm right..."~
-.1~.3~3.0~"Oh lord I can't help this... *sobbing*"~SOB
+.1~.3~1.0~I'm sure she will meet my father in a place far beyond us, right?~
+.1~.3~1.0~Please, tell me I'm right...~
+.1~.3~3.0~Oh lord I can't help this... *sobbing*~SOB

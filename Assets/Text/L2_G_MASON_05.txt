@@ -1,2 +1,2 @@
-.1~.3~3.0~"Even my own mother couldn't look at a disappointment this long."~
-.1~.3~5.0~"She made my father take me down, to look at me in my most disappointing time."~
+.1~.3~3.0~Even my own mother couldn't look at a disappointment this long.~
+.1~.3~5.0~She made my father take me down, to look at me in my most disappointing time.~

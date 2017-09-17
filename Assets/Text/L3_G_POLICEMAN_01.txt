@@ -1,4 +1,4 @@
-.1~.3~1.0~"My family came all the way from the other side of the Pacific Ocean to the States when I was 7, and I barely knew how to speak English."~
-.1~.3~1.0~"Neither fluently nor even properly, couldn't I just speak English at that time. "~
-.1~.3~1.0~"So, you know, I was kind of struggling in my school time, and constantly made fun of."~
-.1~.3~1.0~"That's probably the moment when I set up my mind to become someone that can receive people's respect for sure."~
+.1~.3~1.0~My family came all the way from the other side of the Pacific Ocean to the States when I was 7, and I barely knew how to speak English.~
+.1~.3~1.0~Neither fluently nor even properly, couldn't I just speak English at that time. ~
+.1~.3~1.0~So, you know, I was kind of struggling in my school time, and constantly made fun of.~
+.1~.3~1.0~That's probably the moment when I set up my mind to become someone that can receive people's respect for sure.~

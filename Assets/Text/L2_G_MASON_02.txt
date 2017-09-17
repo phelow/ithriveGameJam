@@ -1,2 +1,2 @@
-.1~.3~3.0~"Nothing good will happen if you stand near me."~
-.1~.3~3.0~"I deserve nothing, my father already told me I was nothing."~
+.1~.3~3.0~Nothing good will happen if you stand near me.~
+.1~.3~3.0~I deserve nothing, my father already told me I was nothing.~
