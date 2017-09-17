@@ -26,6 +26,13 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private Button _advanceButton;
 
+    [SerializeField]
+    private GameObject _lightDay;
+    [SerializeField]
+    private GameObject _lightNight;
+    [SerializeField]
+    private GameObject _lightMorning;
+
     public string nextScene;
 
 
@@ -59,16 +66,25 @@ public class LevelManager : MonoBehaviour {
         {
             case LevelStage.Day:
                 _currentStage = LevelStage.Night;
+                _lightDay.SetActive(false);
+                _lightMorning.SetActive(false);
+                _lightNight.SetActive(true);
                 HideCharacters(persons);
                 ShowCharacters(ghosts);
                 break;
             case LevelStage.Night:
                 HideCharacters(ghosts);
                 _currentStage = LevelStage.Morning;
+                _lightDay.SetActive(false);
+                _lightMorning.SetActive(true);
+                _lightNight.SetActive(false);
                 break;
             case LevelStage.Morning:
                 CheckForEndOfGame();
                 _currentStage = LevelStage.Day;
+                _lightDay.SetActive(true);
+                _lightMorning.SetActive(false);
+                _lightNight.SetActive(false);
                 ShowCharacters(persons);
                 break;
         }
