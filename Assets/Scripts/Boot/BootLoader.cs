@@ -7,6 +7,9 @@ public class BootLoader : MonoBehaviour {
 
     private void Awake () {
 
+        // Make sure we're in the correct scene...
+        
+
         /* The game is being loaded correctly */
         Global.isBuild = true;
 
@@ -19,13 +22,6 @@ public class BootLoader : MonoBehaviour {
         Global.soundManager = new SoundManager();
         Global.dialogueManager = new DialogueManager(dialogueUI);
         Global.timeManager = new TimeManager(5);
-
-        /* Load Title Scene */
-        // Make sure we're in the Bootloader scene, you never know...
-
-        if (SceneManager.GetActiveScene().buildIndex == 0) {
-            SceneManager.LoadScene(1);
-        }
 
     }
 

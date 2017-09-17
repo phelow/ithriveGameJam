@@ -34,9 +34,9 @@ public class LevelManager : MonoBehaviour {
     private GameObject _lightMorning;
 
     [SerializeField]
-    private TextMeshProUGUI _daysPassedText;
+    //private TextMeshProUGUI _daysPassedText;
 
-    private int _daysPassed;
+    //private int _daysPassed;
 
     public string nextScene;
 
@@ -78,8 +78,8 @@ public class LevelManager : MonoBehaviour {
         {
             case LevelStage.Day:
                 _currentStage = LevelStage.Night;
-                _daysPassed++;
-                _daysPassedText.text = "Days Passed: " + _daysPassed;
+                //_daysPassed++;
+                //_daysPassedText.text = "Days Passed: " + _daysPassed;
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(false);
                 _lightNight.SetActive(true);

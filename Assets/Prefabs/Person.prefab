@@ -191,11 +191,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 995fcd7266cc92e49bf023b9876f7dbc, type: 3}
   - {fileID: 8300000, guid: a592932d3573598458083784d9ea1a02, type: 3}
   _maximumAlpha: 1
-  _minimumAlpha: 0.9
+  _minimumAlpha: 1
   _interpolationTime: 1
   _renderer: {fileID: 0}
   _startingOffset: 0
-  _characterBaseColor: {r: 0, g: 0, b: 0, a: 1}
+  _characterBaseColor: {r: 1, g: 1, b: 1, a: 1}
   _colorInterpolationTime: 1
   _characterActiveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212425707961357576
