@@ -17,21 +17,12 @@ public class Urn : MonoBehaviour
     //private Sprite _urnSprite;
 
     private static Urn _heldObject;
-    [SerializeField]
-    List<TextAsset> _ghostDialogFileList;
-    List<Dialogue> _ghostDialogList;
+    
 
-    Dialogue _dialog;
+    
 
     // Use this for initialization
-    void Start()
-    {
-        _ghostDialogList = new List<Dialogue>();
-        foreach (TextAsset text in _ghostDialogFileList)
-        {
-            _ghostDialogList.Add(Dialogue.DialogueFactory(text));
-        }
-    }
+  
 
     private void ClearHeldObject()
     {
@@ -42,24 +33,7 @@ public class Urn : MonoBehaviour
         }
     }
 
-    public void ShowCharacter()
-    {
-        ClearHeldObject();
-        _character.SetActive(true);
-        _dialog = _ghostDialogList[Random.Range(0, _ghostDialogList.Count)];
-    }
     
-
-    public void HideCharacter()
-    {
-        _character.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void OnMouseDown()
     {
@@ -86,12 +60,8 @@ public class Urn : MonoBehaviour
 
     public void InteractWithHoldable(Urn holdable)
     {
-        if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Night)
-        {
-            TypeWriter.s_instance.PlayDialogue(_dialog);
-            return;
-        }
-        else if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Morning)
+        
+        if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Morning)
         {
 
             if (_heldObject == null)
