@@ -18,9 +18,18 @@ public class LevelManager : MonoBehaviour {
     private TextMeshPro _stageText;
     private LevelStage _currentStage = LevelStage.Day;
 
+    [SerializeField]
+    private List<Character> ghosts;
+    [SerializeField]
+    private List<Character> persons;
+
+
     void Awake()
     {
         s_instance = this;
+        ShowCharacters(persons);
+        HideCharacters(ghosts);
+
     }
 
     private void Start()
@@ -41,38 +50,41 @@ public class LevelManager : MonoBehaviour {
         {
             case LevelStage.Day:
                 _currentStage = LevelStage.Night;
-                SetSpritesToGhosts();
+                HideCharacters(persons);
+                ShowCharacters(ghosts);
                 break;
             case LevelStage.Night:
-                SetSpritesToUrns();
+                HideCharacters(ghosts);
                 _currentStage = LevelStage.Morning;
                 break;
             case LevelStage.Morning:
                 CheckForEndOfGame();
                 _currentStage = LevelStage.Day;
+                ShowCharacters(persons);
                 break;
         }
+        
 
         _stageText.text = _currentStage.ToString();
     }
 
-    public void SetSpritesToGhosts()
+    private void HideCharacters(List<Character> chars)
     {
-        Urn[] urns = GameObject.FindObjectsOfType<Urn>();
-        //foreach (Urn urn in urns)
-        //{
-        //    urn.EnterGhostMode();
-        //}
+        foreach(var c in chars)
+        {
+            c.gameObject.SetActive(false);
+        }
     }
 
-    public void SetSpritesToUrns()
+    private void ShowCharacters(List<Character> chars)
     {
-        Urn[] urns = GameObject.FindObjectsOfType<Urn>();
-        //foreach (Urn urn in urns)
-        //{
-        //    urn.SetSpriteToUrn();
-        //}
+        foreach (var c in chars)
+        {
+            c.gameObject.SetActive(true);
+            c.ShowCharacter();
+        }
     }
+
 
     public void CheckForEndOfGame()
     {
