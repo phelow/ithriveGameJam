@@ -28,15 +28,12 @@ public class LevelManager : MonoBehaviour {
 
     public string nextScene;
 
-    private MusicManager _music;
-
 
     public void Awake()
     {
         s_instance = this;
         ShowCharacters(persons);
         HideCharacters(ghosts);
-        _music = new MusicManager(gameObject);
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
