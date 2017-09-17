@@ -26,9 +26,10 @@ public class Character : MonoBehaviour {
     }
 
     
-    public void TalkWith()
+   
+
+    private void OnMouseDown()
     {
         TypeWriter.s_instance.PlayDialogue(_dialog);
-        
     }
 }
