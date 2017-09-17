@@ -22,6 +22,9 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private SpriteRenderer _renderer;
 
+    [SerializeField]
+    private float _startingOffset;
+
     void Awake()
     {
         _dialogList = new List<Dialogue>();
@@ -37,7 +40,7 @@ public class Character : MonoBehaviour {
     {
         while (true)
         {
-            float tPassed = 0.0f;
+            float tPassed = _startingOffset;
             while(tPassed < _interpolationTime)
             {
                 _renderer.color = Color.Lerp(
