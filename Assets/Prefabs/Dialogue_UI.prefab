@@ -140,6 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1174915338741814}
   textBox: {fileID: 114856209178417490}
+  _ghostLetter: {fileID: 1924133311849470, guid: 892204bbca318d742954fc43bc10cdf6,
+    type: 2}
 --- !u!114 &114856209178417490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,7 +210,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
-  m_enableExtraPadding: 0
+  m_enableExtraPadding: 1
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1

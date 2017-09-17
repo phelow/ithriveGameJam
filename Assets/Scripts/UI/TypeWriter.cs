@@ -24,6 +24,9 @@ public class TypeWriter : MonoBehaviour
 
     private IEnumerator AnimateTextRoutine;
 
+    [SerializeField]
+    private GameObject _ghostLetter;
+
 
     private float _clearOffset;
 
@@ -146,6 +149,23 @@ public class TypeWriter : MonoBehaviour
                 Color.clear,
                 Color.white,
                 .6f + Mathf.PingPong(Time.time + whiteOffset, .4f));
+            if (typedText.Length > 0)
+            {
+                int substringStartIndex = Random.Range(0, i);
+                float spaceOutAmount = 500.0f;
+                GameObject createdText = GameObject.Instantiate(
+                    _ghostLetter,
+                    this.textBox.transform.position + new Vector3(Random.Range(-spaceOutAmount, spaceOutAmount), Random.Range(-spaceOutAmount, spaceOutAmount), 0.0f),
+                    this.transform.rotation,
+                    this.transform);
+
+                int createdTextStringLength = Random.Range(0, typedText.Length - substringStartIndex);
+
+                string createdTextString = typedText.Substring(
+                            substringStartIndex,
+                            createdTextStringLength);
+                createdText.GetComponentInChildren<TextMeshProUGUI>().SetText(createdTextString);
+            }
 
             string text = string.Format("<{0}>{1}</color><{2}>{3}</color>",
                 ToHex(whiteShade.r, whiteShade.g, whiteShade.b),
