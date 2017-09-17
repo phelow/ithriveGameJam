@@ -73,15 +73,21 @@ public class Urn : MonoBehaviour
 
     public void InteractWithHoldable(Urn holdable)
     {
-        
+
         if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Morning)
         {
-        
+
             if (_heldObject == null)
             {
                 _heldObject = holdable;
-                
+
                 Select();
+                return;
+            }
+
+            if (_heldObject == this)
+            {
+                _heldObject.ClearHeldObject();
                 return;
             }
 
