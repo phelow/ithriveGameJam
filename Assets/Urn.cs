@@ -94,7 +94,7 @@ public class Urn : MonoBehaviour
                 return;
             }
 
-            _heldObject.ClearHeldObject();
+            
 
             Pedestal savedPedestal = holdable._pedestal;
             holdable._pedestal = _heldObject._pedestal;
@@ -104,6 +104,9 @@ public class Urn : MonoBehaviour
             _heldObject.transform.position = holdable.transform.position;
             holdable.transform.position = newPosition;
             SoundManager.instance.PlayRandom(_soundSwap);
+            
+            
+            _heldObject.ClearHeldObject();
         }
     }
 }
