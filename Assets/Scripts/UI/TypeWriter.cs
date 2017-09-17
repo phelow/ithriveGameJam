@@ -184,7 +184,7 @@ public class TypeWriter : MonoBehaviour
             }
 
             string text = string.Format("<{0}>{1}</color><{2}>{3}</color>",
-                ToHex(whiteShade.r, whiteShade.g, whiteShade.b),
+                ToHex(Color.white.r, Color.white.g, Color.white.b),
                 typedText,
                 ToHex(_backgroundColor.r, _backgroundColor.g, _backgroundColor.b, _backgroundColor.a),
                 trimmedString);
