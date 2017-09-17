@@ -225,6 +225,7 @@ public class TypeWriter : MonoBehaviour
             /* FINISHED PLAYING */
             playing = false;
             LevelManager.s_instance.SetAdvanceButtonVisible(playing);
+            LevelManager.s_instance.ClearTalking();
         }
     }
 

@@ -25,6 +25,8 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private float _startingOffset;
 
+    
+
     void Awake()
     {
         _dialogList = new List<Dialogue>();
@@ -84,6 +86,7 @@ public class Character : MonoBehaviour {
     public void Talk()
     {
         TypeWriter.s_instance.PlayDialogue(_dialog);
+        LevelManager.s_instance.SetTalking(_renderer.sprite);
         SoundManager.instance.Play(_audioClips[Random.Range(0, _audioClips.Count)]);
     }
 }

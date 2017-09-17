@@ -40,6 +40,8 @@ public class LevelManager : MonoBehaviour {
 
     public string nextScene;
 
+    [SerializeField]
+    private SpriteRenderer talking;
 
     public void Awake()
     {
@@ -134,10 +136,13 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    //public void OnMouseDown()
-    //{
-        
-    //    AdvanceState();
-    //}
+    public void SetTalking(Sprite sprite)
+    {
+        talking.sprite = sprite;
+    }
 
+    public void ClearTalking()
+    {
+        talking.sprite = null;
+    }
 }
