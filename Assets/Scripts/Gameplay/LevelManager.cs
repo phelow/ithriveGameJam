@@ -26,6 +26,8 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private Button _advanceButton;
 
+    public string nextScene;
+
     void Awake()
     {
         s_instance = this;
@@ -103,7 +105,7 @@ public class LevelManager : MonoBehaviour {
 
         if (victory)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("win");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
         }
     }
 
