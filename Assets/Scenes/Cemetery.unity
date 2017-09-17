@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 878347646}
   - component: {fileID: 878347645}
   m_Layer: 0
-  m_Name: Directional light (2)
+  m_Name: '#LIGHT_Night'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -733,7 +733,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.007352948, g: 0.05527369, b: 1, a: 1}
+  m_Color: {r: 0.6102941, g: 0.6102941, b: 0.6102941, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1769,7 +1769,7 @@ GameObject:
   - component: {fileID: 1423553141}
   - component: {fileID: 1423553140}
   m_Layer: 0
-  m_Name: Directional light (1)
+  m_Name: '#LIGHT_Morning'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,7 +1784,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.007352948, b: 0.007352948, a: 1}
+  m_Color: {r: 1, g: 0.99215686, b: 0.7058824, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1817,13 +1817,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1423553139}
-  m_LocalRotation: {x: 0.46772423, y: 0.053836927, z: 0.6080774, w: 0.63920075}
+  m_LocalRotation: {x: 0.29994786, y: -0.36289898, z: -0.204764, w: 0.85814184}
   m_LocalPosition: {x: 0, y: 14.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 32.172, y: 48.879, z: 102.073006}
+  m_LocalEulerAnglesHint: {x: 21.480001, y: -53.257004, z: -37.706}
 --- !u!1 &1500857503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,7 +1891,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Day / Night
+  m_Text: Next Phase
 --- !u!222 &1500857506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1908,7 +1908,7 @@ GameObject:
   - component: {fileID: 1588173880}
   - component: {fileID: 1588173879}
   m_Layer: 0
-  m_Name: Directional light
+  m_Name: '#LIGHT_Day'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1923,7 +1923,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9882353, b: 0.62352943, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1956,13 +1956,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1588173878}
-  m_LocalRotation: {x: 0.46772423, y: 0.053836927, z: 0.6080774, w: 0.63920075}
+  m_LocalRotation: {x: 0.50307274, y: -0.25517488, z: 0.60258126, w: 0.5645348}
   m_LocalPosition: {x: 0, y: 14.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 32.172, y: 48.879, z: 102.073006}
+  m_LocalEulerAnglesHint: {x: 61.108, y: 41.188004, z: 118.74701}
 --- !u!1001 &1659359024
 Prefab:
   m_ObjectHideFlags: 0
@@ -2089,7 +2089,6 @@ GameObject:
   - component: {fileID: 2085206462}
   - component: {fileID: 2085206461}
   - component: {fileID: 2085206460}
-  - component: {fileID: 2085206463}
   - component: {fileID: 2085206459}
   m_Layer: 0
   m_Name: AdvanceState
@@ -2114,8 +2113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -15}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -100, y: -50}
+  m_SizeDelta: {x: 163.64, y: 49.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2085206459
 MonoBehaviour:
@@ -2192,14 +2191,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8897059, g: 0.8897059, b: 0.8897059, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2213,14 +2212,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085206457}
---- !u!114 &2085206463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2085206457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad24e88c2e20b3e44bb1c3e1ad12384f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

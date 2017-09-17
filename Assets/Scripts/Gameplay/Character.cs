@@ -34,6 +34,8 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private Color _characterActiveColor;
 
+    private bool isTalking = false;
+
 
     void Awake()
     {
@@ -120,13 +122,14 @@ public class Character : MonoBehaviour {
 
 
         LevelManager.s_instance.SetTalking(_renderer.sprite);
+        isTalking = true;
     }
 
 
 
     public void Update()
     {
-        if (TypeWriter.s_instance.IsTextPlaying())
+        if (TypeWriter.s_instance.IsTextPlaying() && isTalking)
         {
             if (!SoundManager.instance._dialogSource.isPlaying)
             {
@@ -136,6 +139,7 @@ public class Character : MonoBehaviour {
         else
         {
             SoundManager.instance._dialogSource.Stop();
+            isTalking = false;
         }
     }
 
