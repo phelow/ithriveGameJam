@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &368157174
 Transform:
   m_ObjectHideFlags: 0
@@ -798,7 +798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &804780055
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &804780056
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1308,7 +1308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &1478933343
 Prefab:
   m_ObjectHideFlags: 0
@@ -1431,7 +1431,7 @@ Prefab:
       objectReference: {fileID: 1569392860}
     - target: {fileID: 1546193108189858, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1420455342709738, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_Name
@@ -1575,7 +1575,7 @@ Prefab:
         type: 2}
       propertyPath: _pedestal
       value: 
-      objectReference: {fileID: 368157175}
+      objectReference: {fileID: 1426409417}
     - target: {fileID: 212463030226872712, guid: 6b94110c56cfa41499366cea79183218,
         type: 2}
       propertyPath: m_Sprite
@@ -1593,7 +1593,7 @@ Prefab:
       objectReference: {fileID: 1839307885}
     - target: {fileID: 1546193108189858, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4946497254485258, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_LocalScale.x
