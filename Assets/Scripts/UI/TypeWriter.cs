@@ -195,13 +195,13 @@ public class TypeWriter : MonoBehaviour
 
             textBox.text = text;
             /* TO DO - Add sound? */
-            yield return new WaitForSeconds(sentences[currentPointer]._speed); //Lerp down character size
+            yield return new WaitForSeconds(sentences[currentPointer]._speed * .4f); //Lerp down character size
         }
 
         // If skip == true && dialogue is not done playing
         textBox.text = sentences[currentPointer]._text;
 
-        yield return new WaitForSeconds(sentences[currentPointer]._waitTime);
+        yield return new WaitForSeconds(sentences[currentPointer]._waitTime * 4);
 
         NextText();
     }
@@ -237,7 +237,7 @@ public class TypeWriter : MonoBehaviour
     {
         if (playing)
         {
-            skip = true;
+            //skip = true;
         }
     }
 
