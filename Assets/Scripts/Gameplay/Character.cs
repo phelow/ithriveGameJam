@@ -13,6 +13,16 @@ public class Character : MonoBehaviour {
     private Dialogue _dialog;
     private int randomnumber;
 
+    [SerializeField]
+    private float _maximumAlpha = 1.0f;
+    [SerializeField]
+    private float _minimumAlpha = 0.0f;
+    [SerializeField]
+    private float _interpolationTime = 1.0f;
+
+    [SerializeField]
+    private SpriteRenderer _renderer;
+
     void Awake()
     {
         _dialogList = new List<Dialogue>();
@@ -20,6 +30,39 @@ public class Character : MonoBehaviour {
         foreach (TextAsset text in _dialogFileList)
         {
             _dialogList.Add(Dialogue.DialogueFactory(text));
+        }
+
+        StartCoroutine(InterpolateCharacters());
+    }
+
+    private IEnumerator InterpolateCharacters()
+    {
+        while (true)
+        {
+            float tPassed = 0.0f;
+            while(tPassed < _interpolationTime)
+            {
+                _renderer.color = Color.Lerp(
+                    new Color(Color.white.r, Color.white.g, Color.white.b, _maximumAlpha), 
+                    new Color(Color.white.r, Color.white.g, Color.white.b, _minimumAlpha), 
+                    tPassed / _interpolationTime);
+
+                tPassed += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+
+            tPassed = 0.0f;
+            while (tPassed < _interpolationTime)
+            {
+                _renderer.color = Color.Lerp(
+                    new Color(Color.white.r, Color.white.g, Color.white.b, _minimumAlpha), 
+                    new Color(Color.white.r, Color.white.g, Color.white.b, _maximumAlpha), 
+                    tPassed / _interpolationTime);
+
+                tPassed += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+
         }
     }
 

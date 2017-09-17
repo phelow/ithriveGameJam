@@ -576,7 +576,11 @@ MonoBehaviour:
   _dialogFileList:
   - {fileID: 4900000, guid: 45e573185b61d6c4d9ec2c7551d791fd, type: 3}
   _audioClips:
-  - {fileID: 8300000, guid: d793a39f87d5e49438fe6ef77c0aec3d, type: 3}
+  - {fileID: 0}
+  _maximumAlpha: 1
+  _minimumAlpha: 0
+  _interpolationTime: 1
+  _renderer: {fileID: 848395792}
 --- !u!212 &848395792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1421,20 +1425,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1649,7 +1639,11 @@ MonoBehaviour:
   _dialogFileList:
   - {fileID: 4900000, guid: 45e573185b61d6c4d9ec2c7551d791fd, type: 3}
   _audioClips:
-  - {fileID: 8300000, guid: 0eadf595f24347245bfbc82060ed1f41, type: 3}
+  - {fileID: 0}
+  _maximumAlpha: 1
+  _minimumAlpha: 0
+  _interpolationTime: 1
+  _renderer: {fileID: 1843095617}
 --- !u!65 &1843095620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1867,6 +1861,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad24e88c2e20b3e44bb1c3e1ad12384f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicSource: {fileID: 0}
-  _musicClips:
-  - {fileID: 8300000, guid: bc11e3bcfe7f5904fa3859b0093ded92, type: 3}
