@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Urn : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _character;
+    //[SerializeField]
+    //private GameObject _character;
 
     [SerializeField]
     private Pedestal _pedestal;
@@ -28,7 +28,7 @@ public class Urn : MonoBehaviour
     {
         if (_heldObject != null)
         {
-            _heldObject.SetColor(Color.white);
+            //_heldObject.SetColor(Color.white);
             _heldObject = null;
         }
     }
@@ -37,6 +37,7 @@ public class Urn : MonoBehaviour
 
     public void OnMouseDown()
     {
+        
         OnInteraction();
     }
 
@@ -60,14 +61,14 @@ public class Urn : MonoBehaviour
 
     public void InteractWithHoldable(Urn holdable)
     {
-        
+        Debug.Log("CLICKED ON: " + gameObject.name);
         if (LevelManager.s_instance.GetStage() == LevelManager.LevelStage.Morning)
         {
-
+            Debug.Log("CLICKED ON: " + gameObject.name);
             if (_heldObject == null)
             {
                 _heldObject = holdable;
-                _heldObject.SetColor(Color.yellow);
+                //_heldObject.SetColor(Color.yellow);
                 return;
             }
 
@@ -78,8 +79,8 @@ public class Urn : MonoBehaviour
             Vector3 newPosition = _heldObject.transform.position;
             _heldObject.transform.position = holdable.transform.position;
             holdable.transform.position = newPosition;
-            _heldObject.SetColor(Color.white);
-            holdable.SetColor(Color.white);
+            //_heldObject.SetColor(Color.white);
+            //holdable.SetColor(Color.white);
             _heldObject = null;
         }
     }
