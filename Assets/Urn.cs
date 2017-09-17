@@ -21,6 +21,9 @@ public class Urn : MonoBehaviour
 
     public Color _originalColor;
 
+    public List<AudioClip> _soundSwap;
+
+
     // Use this for initialization
     private void Awake()
     {
@@ -100,6 +103,7 @@ public class Urn : MonoBehaviour
             Vector3 newPosition = _heldObject.transform.position;
             _heldObject.transform.position = holdable.transform.position;
             holdable.transform.position = newPosition;
+            SoundManager.instance.PlayRandom(_soundSwap);
         }
     }
 }

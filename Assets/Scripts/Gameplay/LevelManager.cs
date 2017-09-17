@@ -26,12 +26,14 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private Button _advanceButton;
 
-    void Awake()
+    public string nextScene;
+
+
+    public void Awake()
     {
         s_instance = this;
         ShowCharacters(persons);
         HideCharacters(ghosts);
-
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
@@ -43,6 +45,7 @@ public class LevelManager : MonoBehaviour {
     {
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(AdvanceState);
+        //_music.Play("Day Loop");
     }
 
     public LevelStage GetStage()
@@ -103,7 +106,8 @@ public class LevelManager : MonoBehaviour {
 
         if (victory)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("win");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+            SoundManager.instance._musicSource.Stop();
         }
     }
 

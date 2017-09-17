@@ -16,7 +16,6 @@ public class BootLoader : MonoBehaviour {
 
         /* Create Managers */
         Global.storyManager = new StoryManager();
-        Global.musicManager = new MusicManager(musicSource);
         Global.soundManager = new SoundManager();
         Global.dialogueManager = new DialogueManager(dialogueUI);
         Global.timeManager = new TimeManager(5);
