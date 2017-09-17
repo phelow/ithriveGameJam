@@ -86,6 +86,8 @@ public class LevelManager : MonoBehaviour
                 _lightNight.SetActive(true);
                 HideCharacters(persons);
                 ShowCharacters(ghosts);
+
+                SoundManager.instance.PlayMusic(SoundManager.instance.nightMusic);
                 break;
             case LevelStage.Night:
                 HideCharacters(ghosts);
@@ -93,6 +95,7 @@ public class LevelManager : MonoBehaviour
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(true);
                 _lightNight.SetActive(false);
+                SoundManager.instance.PlayMusic(SoundManager.instance.dayMusic);
                 break;
             case LevelStage.Morning:
                 CheckForEndOfGame();
