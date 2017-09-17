@@ -38,9 +38,11 @@ public class Character : MonoBehaviour {
 
     private IEnumerator InterpolateCharacters()
     {
+        yield return new WaitForSeconds(_startingOffset);
+
         while (true)
         {
-            float tPassed = _startingOffset;
+            float tPassed = 0.0f;
             while(tPassed < _interpolationTime)
             {
                 _renderer.color = Color.Lerp(
