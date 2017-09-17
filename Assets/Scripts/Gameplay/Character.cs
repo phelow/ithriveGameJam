@@ -11,12 +11,10 @@ public class Character : MonoBehaviour {
     public List<AudioClip> _audioClips;
 
     private Dialogue _dialog;
-    private int randomnumber;
 
     void Awake()
     {
         _dialogList = new List<Dialogue>();
-        _audioClips = new List<AudioClip>();
         foreach (TextAsset text in _dialogFileList)
         {
             _dialogList.Add(Dialogue.DialogueFactory(text));
@@ -26,8 +24,7 @@ public class Character : MonoBehaviour {
     public void ShowCharacter()
     {
         // Debug.Log("SIZE:" + _dialogList.Count);
-        randomnumber = Random.Range(0, _dialogList.Count);
-        _dialog = _dialogList[randomnumber];
+        _dialog = _dialogList[Random.Range(0, _dialogList.Count)];
     }
 
     
@@ -36,6 +33,6 @@ public class Character : MonoBehaviour {
     private void OnMouseDown()
     {
         TypeWriter.s_instance.PlayDialogue(_dialog);
-        SoundManager.instance.Play(_audioClips[randomnumber]);
+        SoundManager.instance.Play(_audioClips[Random.Range(0, _audioClips.Count)]);
     }
 }
