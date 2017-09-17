@@ -94,16 +94,48 @@ public class Urn : MonoBehaviour
                 return;
             }
 
-            _heldObject.ClearHeldObject();
+            
 
             Pedestal savedPedestal = holdable._pedestal;
             holdable._pedestal = _heldObject._pedestal;
             _heldObject._pedestal = savedPedestal;
 
             Vector3 newPosition = _heldObject.transform.position;
-            _heldObject.transform.position = holdable.transform.position;
-            holdable.transform.position = newPosition;
+            _heldObject.StartCoroutine(_heldObject.MoveUrnToPosition(
+                _heldObject.transform.position, 
+                Vector3.Lerp(_heldObject.transform.position, holdable.transform.position, .5f), 
+                holdable.transform.position));
+            _heldObject.StartCoroutine(
+                holdable.MoveUrnToPosition(holdable.transform.position,
+                Vector3.Lerp(holdable.transform.position, newPosition + Vector3.up * 5.0f, .5f), 
+                newPosition));
             SoundManager.instance.PlayRandom(_soundSwap);
+            
+            
+            _heldObject.ClearHeldObject();
+        }
+    }
+
+    private IEnumerator MoveUrnToPosition(Vector3 originalPosition, Vector3 midpoint, Vector3 targetPosition)
+    {
+        float tPassed = 0.0f;
+        float totalLerpTime = 1.0f;
+        while (tPassed < totalLerpTime)
+        {
+            transform.position = 
+                Vector3.Slerp(originalPosition, midpoint, tPassed / totalLerpTime);
+            tPassed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        tPassed = 0.0f;
+        totalLerpTime = 1.0f;
+        while (tPassed < totalLerpTime)
+        {
+            transform.position =
+                Vector3.Slerp(midpoint, targetPosition, tPassed / totalLerpTime);
+            tPassed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
     }
 }

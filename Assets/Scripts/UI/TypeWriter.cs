@@ -159,6 +159,9 @@ public class TypeWriter : MonoBehaviour
                     this.textBox.transform.position + new Vector3(Random.Range(-spaceOutAmount, spaceOutAmount), Random.Range(-spaceOutAmount, spaceOutAmount), 0.0f),
                     this.transform.rotation,
                     this.transform);
+
+                createdText.GetComponent<FadingLetter>().SetSpookiness(sentences[currentPointer]._spookiness);
+
                 int charactersCreated = (int)Random.Range(1.0f, sentences[currentPointer]._spookiness);
 
                 for (int c = 0; c < charactersCreated; c++)
