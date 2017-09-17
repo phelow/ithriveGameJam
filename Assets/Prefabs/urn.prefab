@@ -94,6 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pedestal: {fileID: 0}
+  _originalColor: {r: 0, g: 0, b: 0, a: 0}
+  _soundSwap:
+  - {fileID: 8300000, guid: c9086401617a4c14ab9faf8bd18e86c6, type: 3}
+  - {fileID: 8300000, guid: f3e39f4b9ecb6c246b1806d9ab1ac898, type: 3}
 --- !u!136 &136840937378657030
 CapsuleCollider:
   m_ObjectHideFlags: 1
