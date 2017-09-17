@@ -51,7 +51,7 @@ public class FadingLetter : MonoBehaviour
                     yield return JitterRoutine();
                     break;
                 case FadeOutBehavior.FadeOut:
-                    yield return JitterRoutine();
+                    yield return RotateRoutine();
                     break;
             }
 
@@ -61,6 +61,20 @@ public class FadingLetter : MonoBehaviour
         yield return FadeOutRoutine();
 
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator RotateRoutine()
+    {
+        float tPassed = 0.0f;
+        float targetTime = UnityEngine.Random.Range(0.3f, 1.5f);
+        Quaternion targetRotation = Quaternion.EulerRotation(0.0f, 0.0f, UnityEngine.Random.Range(-360.0f, 360.0f));
+
+        while (tPassed < targetTime)
+        {
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, tPassed / targetTime);
+            tPassed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private IEnumerator JitterRoutine()
