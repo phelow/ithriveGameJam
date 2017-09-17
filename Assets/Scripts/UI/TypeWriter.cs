@@ -139,14 +139,15 @@ public class TypeWriter : MonoBehaviour
             string currentSentence = sentences[currentPointer]._text;
 
             string typedText = currentSentence.Substring(0, i);
-            string lastChar = currentSentence.Substring(i, 1);
-            string trimmedString = currentSentence.Substring(i + 1);
+            string trimmedString = currentSentence.Substring(i);
 
-            Color foregroundColor = Color.black;
+            Color foregroundColor = Color.green;
 
-            string text = string.Format("<{0}>{1}</color><{2}><u>{4}</u></color><{5}>{6}</color>",
-            ToHex(Color.white.r, Color.white.g, Color.white.b), typedText, ToHex(foregroundColor.r, foregroundColor.g, foregroundColor.b), 60, lastChar,
-            ToHex(_backgroundColor.r, _backgroundColor.g, _backgroundColor.b, _backgroundColor.a), trimmedString);
+            string text = string.Format("<{0}>{1}</color><{2}>{3}</color>",
+                ToHex(Color.white.r, Color.white.g, Color.white.b), 
+                typedText,
+                ToHex(_backgroundColor.r, _backgroundColor.g, _backgroundColor.b, _backgroundColor.a), 
+                trimmedString);
 
             textBox.text = text;
             /* TO DO - Add sound? */
