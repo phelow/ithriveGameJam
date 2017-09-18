@@ -198,7 +198,7 @@ public class TypeWriter : MonoBehaviour
 
             textBox.text = text;
             /* TO DO - Add sound? */
-            yield return new WaitForSeconds(sentences[currentPointer]._speed * .4f); //Lerp down character size
+            yield return new WaitForSeconds(sentences[currentPointer]._speed * .001f); //Lerp down character size
         }
 
         // If skip == true && dialogue is not done playing
