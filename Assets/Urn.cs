@@ -52,6 +52,11 @@ public class Urn : MonoBehaviour
 
     public void OnMouseDown()
     {
+        if (_locked)
+        {
+            return;
+
+        }
         
         OnInteraction();
     }
@@ -118,8 +123,10 @@ public class Urn : MonoBehaviour
         }
     }
 
+    bool _locked = false;
     private IEnumerator MoveUrnToPosition(Vector3 originalPosition, Vector3 midpoint, Vector3 targetPosition)
     {
+        _locked = true;
         float tPassed = 0.0f;
         float totalLerpTime = 1.0f;
         while (tPassed < totalLerpTime)
@@ -139,5 +146,6 @@ public class Urn : MonoBehaviour
             tPassed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        _locked = false;
     }
 }
