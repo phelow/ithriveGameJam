@@ -7,7 +7,11 @@ public class SoundManager : MonoBehaviour
     public AudioSource _soundSource;
     public AudioSource _dialogSource;
     public AudioSource _musicSource;
+    public AudioSource _characterMusicSource;
     public static SoundManager instance = null;
+
+    public AudioClip nightMusic;
+    public AudioClip dayMusic;
 
     private void Awake()
     {
@@ -30,6 +34,12 @@ public class SoundManager : MonoBehaviour
         _soundSource.Play();
     }
 
+    public void PlayMusic(AudioClip clip)
+    {
+        _musicSource.clip = clip;
+        _musicSource.loop = true;
+        _musicSource.Play();
+    }
 
     public void PlayRandomSound(List<AudioClip> L_clip)
     {
