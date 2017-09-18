@@ -2093,3 +2093,29 @@ Prefab:
     - {fileID: 114490711544517176, guid: c1375eb228b75b742ab2ff13d83718ef, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c1375eb228b75b742ab2ff13d83718ef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2146886732 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1958537497065070, guid: c1375eb228b75b742ab2ff13d83718ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 2146886731}
+--- !u!114 &2146886733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2146886732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1

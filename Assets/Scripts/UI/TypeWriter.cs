@@ -9,6 +9,7 @@ public class TypeWriter : MonoBehaviour
     public static TypeWriter s_instance;
     public GameObject dialoguePanel;
     public TextMeshProUGUI textBox;
+    public GameObject blur;
 
     private List<Sentence> sentences;
     private int currentPointer;
@@ -36,6 +37,7 @@ public class TypeWriter : MonoBehaviour
         s_instance = this;
         AnimateTextRoutine = AnimateText();
         dialoguePanel.SetActive(false);
+        blur.SetActive(false);
 
         StartCoroutine(PingPongBackground());
     }
@@ -75,6 +77,7 @@ public class TypeWriter : MonoBehaviour
         if (this.sentences != null)
         {
             playing = true;
+            blur.SetActive(true);
             LevelManager.s_instance.SetAdvanceButtonVisible(playing);
             currentPointer = 0;
 
@@ -228,6 +231,7 @@ public class TypeWriter : MonoBehaviour
 
             /* FINISHED PLAYING */
             playing = false;
+            blur.SetActive(false);
             LevelManager.s_instance.SetAdvanceButtonVisible(playing);
             LevelManager.s_instance.ClearTalking();
         }
