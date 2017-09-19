@@ -28,6 +28,7 @@ public class Urn : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
+        _originalColor = spriteRenderer.color;
     }
 
     private void ClearHeldObject()
@@ -39,14 +40,13 @@ public class Urn : MonoBehaviour
     private void Select()
     {
         
-        _originalColor = spriteRenderer.color;
         spriteRenderer.color = Color.yellow;
         
     }
 
     private void Deselect()
     {
-        GetComponent<Renderer>().material.color = _originalColor;
+        spriteRenderer.color = _originalColor;
         
     }
 
@@ -116,9 +116,7 @@ public class Urn : MonoBehaviour
                 holdable.MoveUrnToPosition(holdable.transform.position,
                 Vector3.Lerp(holdable.transform.position, newPosition + Vector3.up * 5.0f, .5f), 
                 newPosition));
-            SoundManager.instance.PlayRandomSound(_soundSwap);
-            
-            
+            SoundManager.instance.PlayRandomSwappingSound();
             _heldObject.ClearHeldObject();
         }
     }
