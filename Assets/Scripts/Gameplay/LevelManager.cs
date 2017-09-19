@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class LevelManager : MonoBehaviour
     //private int _daysPassed;
 
     public string nextScene;
+    private int currentLevel;
 
     [SerializeField]
     private SpriteRenderer talking;
@@ -57,6 +59,8 @@ public class LevelManager : MonoBehaviour
         persons.Remove(GameObject.Find("dad").GetComponent<Dad>());
         ShowCharacters(persons);
         HideCharacters(ghosts);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        currentLevel = 1;
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
@@ -139,8 +143,9 @@ public class LevelManager : MonoBehaviour
 
         if (victory)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
-            GetCharacters();
+            currentLevel++;
+            nextScene = "Level" + currentLevel.ToString();
+            SceneManager.LoadScene(nextScene);
         }
     }
 
@@ -159,5 +164,11 @@ public class LevelManager : MonoBehaviour
     public void ClearTalking()
     {
         talking.sprite = null;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        GetCharacters();
+        ShowCharacters(persons);
+        HideCharacters(ghosts);
     }
 }

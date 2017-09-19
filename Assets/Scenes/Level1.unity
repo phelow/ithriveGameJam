@@ -186,11 +186,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 29696407}
   m_LocalRotation: {x: -0, y: -0.112060666, z: -0, w: 0.9937014}
-  m_LocalPosition: {x: 248.7, y: 3.4, z: 3.87}
-  m_LocalScale: {x: 0.52882636, y: 0.5288265, z: 0.5288265}
+  m_LocalPosition: {x: -115.364815, y: -238.16882, z: 4.4291844}
+  m_LocalScale: {x: 0.60523754, y: 0.6052377, z: 0.6052376}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1132740141}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -12.868001, z: 0}
 --- !u!1 &62304720
 GameObject:
@@ -273,7 +273,7 @@ Transform:
   m_LocalScale: {x: 281.01285, y: 281.013, z: 281.013}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 1.088, z: 0}
 --- !u!114 &69114780
 MonoBehaviour:
@@ -396,11 +396,6 @@ Transform:
   m_Father: {fileID: 1326762311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &127435299 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1581526074897988, guid: 3e18d96fdba7427499f21cac920f65e5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1636503332}
 --- !u!1 &193093860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,11 +1705,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!1 &947712946 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1681209713936192, guid: 507829a1abc7f0e4db9811bea1f3eacc,
-    type: 2}
-  m_PrefabInternal: {fileID: 927062611}
 --- !u!4 &963772546
 Transform:
   m_ObjectHideFlags: 0
@@ -2025,6 +2015,7 @@ RectTransform:
   m_Children:
   - {fileID: 524745920}
   - {fileID: 2085206458}
+  - {fileID: 29696410}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2216,11 +2207,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7718271edec7419459bc85dbfd8d624a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1159288202 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1430127391673416, guid: 570041fff2c4c4f44ad947e407e6343b,
-    type: 2}
-  m_PrefabInternal: {fileID: 894661452}
 --- !u!4 &1239508047 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4106571294716850, guid: 3884599c3e719d7459428defc18865ed,
@@ -2979,9 +2965,11 @@ MonoBehaviour:
   - {fileID: 439258049}
   - {fileID: 453809799}
   _advanceButton: {fileID: 2085206460}
-  _lightDay: {fileID: 947712946}
-  _lightNight: {fileID: 127435299}
-  _lightMorning: {fileID: 1159288202}
+  _lightDay: {fileID: 1681209713936192, guid: 507829a1abc7f0e4db9811bea1f3eacc, type: 2}
+  _lightNight: {fileID: 1581526074897988, guid: 3e18d96fdba7427499f21cac920f65e5,
+    type: 2}
+  _lightMorning: {fileID: 1430127391673416, guid: 570041fff2c4c4f44ad947e407e6343b,
+    type: 2}
   nextScene: Level2
   talking: {fileID: 29696409}
 --- !u!114 &2085206460

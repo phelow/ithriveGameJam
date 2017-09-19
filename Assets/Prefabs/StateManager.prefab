@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 222587218769043266}
   - component: {fileID: 114119401844592626}
   - component: {fileID: 114024528227236666}
-  - component: {fileID: 114490711544517176}
   - component: {fileID: 114384930691544796}
   m_Layer: 0
   m_Name: AdvanceState
@@ -170,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ae030aefedecb488d99424094b7c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stageText: {fileID: 0}
   ghosts:
   - {fileID: 0}
   - {fileID: 0}
@@ -181,7 +179,6 @@ MonoBehaviour:
   _lightDay: {fileID: 0}
   _lightNight: {fileID: 0}
   _lightMorning: {fileID: 0}
-  _daysPassedText: {fileID: 0}
   nextScene: Level2
   talking: {fileID: 0}
 --- !u!114 &114436470507661986
@@ -193,17 +190,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b99b72813b493fc4bae45879a71f36e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114490711544517176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1042258701803088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114506911996780244
