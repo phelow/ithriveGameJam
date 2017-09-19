@@ -23,11 +23,13 @@ public class Urn : MonoBehaviour
     public Color _originalColor;
 
     public List<AudioClip> _soundSwap;
+    private static bool s_urnsLocked = false;
 
 
     // Use this for initialization
     private void Awake()
     {
+        s_urnsLocked = false;
         _originalColor = spriteRenderer.color;
     }
 
@@ -52,7 +54,7 @@ public class Urn : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (_locked)
+        if (s_urnsLocked)
         {
             return;
 
@@ -121,10 +123,9 @@ public class Urn : MonoBehaviour
         }
     }
 
-    bool _locked = false;
     private IEnumerator MoveUrnToPosition(Vector3 originalPosition, Vector3 midpoint, Vector3 targetPosition)
     {
-        _locked = true;
+        s_urnsLocked = true;
         float tPassed = 0.0f;
         float totalLerpTime = 1.0f;
         while (tPassed < totalLerpTime)
@@ -144,6 +145,6 @@ public class Urn : MonoBehaviour
             tPassed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        _locked = false;
+        s_urnsLocked = false;
     }
 }
