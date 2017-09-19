@@ -42,18 +42,11 @@ public class TypeWriter : MonoBehaviour
         StartCoroutine(PingPongBackground());
     }
 
-    private void LateUpdate()
+    void Update()
     {
-        if (playing == true && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (skip == false)
-            {
-                Global.dialogueManager.FinishCurrent();
-            }
-            else
-            {
-                Global.dialogueManager.SkipCurrent();
-            }
+            skip = true;
         }
     }
 
@@ -89,7 +82,6 @@ public class TypeWriter : MonoBehaviour
                 AnimateTextRoutine = AnimateText();
             }
 
-            skip = false;
             StartCoroutine(AnimateTextRoutine);
             return true;
         }
@@ -124,7 +116,7 @@ public class TypeWriter : MonoBehaviour
     IEnumerator AnimateText()
     {
         _animateTextStarted = true;
-
+        skip = false;
         _backgroundColorA = new Color(
             Random.Range(0.1f, 1.0f),
             Random.Range(0.1f, 1.0f),
@@ -143,10 +135,6 @@ public class TypeWriter : MonoBehaviour
 
         for (int i = 0; i < (this.sentences[currentPointer]._text.Length); i++)
         {
-            if (skip)
-            {
-                break;
-            }
 
             string currentSentence = sentences[currentPointer]._text;
 
@@ -198,11 +186,18 @@ public class TypeWriter : MonoBehaviour
 
             textBox.text = text;
             /* TO DO - Add sound? */
+
+            if (skip)
+            {
+                continue;
+            }
+
             yield return new WaitForSeconds(sentences[currentPointer]._speed * .4f); //Lerp down character size
         }
 
         // If skip == true && dialogue is not done playing
         textBox.text = sentences[currentPointer]._text;
+        skip = false;
 
         yield return new WaitForSeconds(sentences[currentPointer]._waitTime * 5);
 
@@ -218,7 +213,6 @@ public class TypeWriter : MonoBehaviour
     {
         StopAllCoroutines();
         currentPointer++;
-        skip = false;
 
         if (currentPointer < sentences.Count)
         {

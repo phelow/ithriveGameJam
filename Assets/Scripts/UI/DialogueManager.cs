@@ -14,16 +14,4 @@ public class DialogueManager {
         return dialogueUI.PlayDialogue(d);
     }
 
-    public void SkipCurrent () {
-        if (dialogueUI) {
-            dialogueUI.NextText();
-        }
-    }
-
-    public void FinishCurrent () {
-        if (dialogueUI) {
-            dialogueUI.FinishCurrent();
-        }
-    }
-
 }
