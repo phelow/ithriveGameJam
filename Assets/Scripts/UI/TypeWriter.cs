@@ -149,18 +149,19 @@ public class TypeWriter : MonoBehaviour
             {
                 int substringStartIndex = Random.Range(0, i);
                 float spaceOutAmount = Screen.height;
-                GameObject createdText = GameObject.Instantiate(
+
+                int charactersCreated = (int)Random.Range(1.0f, Mathf.Max(1.0f, sentences[currentPointer]._spookiness));
+
+                for (int c = 0; c < charactersCreated; c++)
+                {
+                    GameObject createdText = GameObject.Instantiate(
                     _ghostLetter,
                     this.textBox.transform.position + new Vector3(Random.Range(-spaceOutAmount, spaceOutAmount), Random.Range(-spaceOutAmount, spaceOutAmount), 0.0f),
                     this.transform.rotation,
                     this.transform);
 
-                createdText.GetComponent<FadingLetter>().SetSpookiness(sentences[currentPointer]._spookiness);
+                    createdText.GetComponent<FadingLetter>().SetSpookiness(sentences[currentPointer]._spookiness);
 
-                int charactersCreated = (int)Random.Range(1.0f, sentences[currentPointer]._spookiness);
-
-                for (int c = 0; c < charactersCreated; c++)
-                {
                     if (sentences[currentPointer]._words.Length <= 1)
                     {
                         int createdTextStringLength = Random.Range(0, typedText.Length - substringStartIndex);
@@ -200,7 +201,7 @@ public class TypeWriter : MonoBehaviour
         skip = false;
 
         float tPassed = 0.0f;
-        while(tPassed < sentences[currentPointer]._waitTime * 5 && !skip)
+        while (tPassed < sentences[currentPointer]._waitTime * 5 && !skip)
         {
             tPassed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
