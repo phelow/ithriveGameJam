@@ -1,3 +1,3 @@
-.1~.3~1.0~I could hear her crying in her bedroom several times when I was younger.~
-.1~.3~1.0~Back then I wasn't sensitive enough to feel what she was feeling.~
-.1~.3~3.0~But now... This is just so overwhelming...~MUM...*SORRY
+.1~.3~1.0~I could hear her crying in her bedroom several times when I was younger.~~13
+.1~.3~1.0~Back then I wasn't sensitive enough to feel what she was feeling.~~11
+.1~.3~3.0~But now... This is just so overwhelming...~MUM...*SORRY~9

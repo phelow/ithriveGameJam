@@ -9,9 +9,8 @@ public class Character : MonoBehaviour
     private List<TextAsset> _dialogFileList;
     private List<Dialogue> _dialogList;
 
-    public List<AudioClip> _audioClips;
-
     private Dialogue _dialog;
+    private int _dialogIndex;
 
     [SerializeField]
     private float _maximumAlpha = 1.0f;
@@ -34,8 +33,6 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     private Color _characterActiveColor;
-
-    private bool isTalking = false;
 
 
     void Awake()
@@ -105,7 +102,12 @@ public class Character : MonoBehaviour
 
     public void ShowCharacter()
     {
-        _dialog = _dialogList[Random.Range(0, _dialogList.Count)];
+        /*_dialog = _dialogList[Random.Range(0, _dialogList.Count)];*/
+        if (_dialogList.Count > 1) {
+            _dialogIndex = Random.Range(0, _dialogList.Count);
+        }else {
+            _dialogIndex = 0;
+        }
     }
 
 
@@ -123,29 +125,18 @@ public class Character : MonoBehaviour
             return;
         }
 
-        TypeWriter.s_instance.PlayDialogue(_dialog);
+        TypeWriter.s_instance.PlayDialogue(_dialogList[_dialogIndex]);
+        if (_dialogList.Count > 1) {
+            _dialogIndex++;
+            if(_dialogIndex >= _dialogList.Count) {
+                _dialogIndex = 0;
+            }
+        } else {
+            _dialogIndex = 0;
+        }
 
 
         LevelManager.s_instance.SetTalking(_renderer.sprite);
-        isTalking = true;
-    }
-
-
-
-    public void Update()
-    {
-        if (TypeWriter.s_instance.IsTextPlaying() && isTalking)
-        {
-            if (!SoundManager.instance._dialogSource.isPlaying)
-            {
-                SoundManager.instance.PlayDialog(_audioClips);
-            }
-        }
-        else
-        {
-            SoundManager.instance._dialogSource.Stop();
-            isTalking = false;
-        }
     }
 
 }

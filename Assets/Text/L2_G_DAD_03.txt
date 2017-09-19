@@ -1,2 +1,2 @@
-.1~.3~1.0~Mason clings onto me like a lost dog. I only see his mother come to mourn.~
-.1~.3~1.0~And that woman comes daily, begging for her son's forgiveness.~
+.1~.3~1.0~Mason clings onto me like a lost dog. I only see his mother come to mourn.~~18
+.1~.3~1.0~And that woman comes daily, begging for her son's forgiveness.~~16

@@ -118,7 +118,7 @@ public class Urn : MonoBehaviour
                 holdable.MoveUrnToPosition(holdable.transform.position,
                 Vector3.Lerp(holdable.transform.position, newPosition + Vector3.up * 5.0f, .5f), 
                 newPosition));
-            SoundManager.instance.PlayRandomSwappingSound();
+            Global.soundManager.PlayRandomSwappingSound();
             _heldObject.ClearHeldObject();
         }
     }

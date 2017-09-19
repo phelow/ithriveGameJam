@@ -1,2 +1,2 @@
-.1~.3~3.0~The longer you stare at me the more you'll realize I have and had no importance to this world.~
-.1~.3~5.0~Seriously, what are you staring at? Creep.~CREEP*GO AWAY
+.1~.3~3.0~The longer you stare at me the more you'll realize I have and had no importance to this world.~~27
+.1~.3~5.0~Seriously, what are you staring at? Creep.~CREEP*GO AWAY~21
