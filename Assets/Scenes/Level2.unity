@@ -880,7 +880,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1427744, y: -0.06424761}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -891,7 +891,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.8709253, y: 2.999411}
   m_EdgeRadius: 0
 --- !u!33 &804780058
 MeshFilter:
@@ -1647,6 +1647,26 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0.17
       objectReference: {fileID: 0}
+    - target: {fileID: 61491806983838410, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.58521366
+      objectReference: {fileID: 0}
+    - target: {fileID: 61491806983838410, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 4.381068
+      objectReference: {fileID: 0}
+    - target: {fileID: 61491806983838410, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.121649146
+      objectReference: {fileID: 0}
+    - target: {fileID: 61491806983838410, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2.0503821
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
   m_IsPrefabParent: 0
@@ -1790,6 +1810,16 @@ Prefab:
     - target: {fileID: 4381189849619040, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_LocalPosition.z
       value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 61491806983838410, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.5900118
+      objectReference: {fileID: 0}
+    - target: {fileID: 61491806983838410, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.7757378
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
