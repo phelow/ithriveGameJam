@@ -85,15 +85,12 @@ public class LevelManager : MonoBehaviour
         {
             case LevelStage.Day:
                 _currentStage = LevelStage.Night;
-                //_daysPassed++;
-                //_daysPassedText.text = "Days Passed: " + _daysPassed;
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(false);
                 _lightNight.SetActive(true);
                 HideCharacters(persons);
                 ShowCharacters(ghosts);
-
-                //Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
+Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
                 break;
             case LevelStage.Night:
                 HideCharacters(ghosts);
@@ -101,7 +98,7 @@ public class LevelManager : MonoBehaviour
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(true);
                 _lightNight.SetActive(false);
-                //Global.soundManager.PlayMusic(Global.soundManager.dayMusic);
+                Global.soundManager.PlayMusic(Global.soundManager.dayMusic);
                 break;
             case LevelStage.Morning:
                 CheckForEndOfGame();

@@ -17,8 +17,10 @@ public class SoundManager : MonoBehaviour
     private bool listPlaying = false;
     private float currentClipTime;
 
-    private void Awake(){
+    private float originalMusicVolume = 1f;
 
+    private void Awake(){
+        
     }
 
     public void PlaySingleSound(AudioClip clip)
@@ -35,7 +37,23 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic(AudioClip clip) {
         _musicSource.Stop();
         _musicSource.clip = clip;
+        _musicSource.loop = true;
         _musicSource.Play();
+    }
+
+    public void PlayCharacterMusic(AudioClip clip) {
+        originalMusicVolume = _musicSource.volume;
+        _musicSource.volume = .5f;
+        _characterMusicSource.Stop();
+        _characterMusicSource.clip = clip;
+        _characterMusicSource.time = _musicSource.time;
+        _characterMusicSource.loop = true;
+        _characterMusicSource.Play();
+    }
+
+    public void StopCharacterMusic() {
+        _characterMusicSource.Stop();
+        _musicSource.volume = originalMusicVolume;
     }
 
     public void PlayRandomSound(List<AudioClip> L_clip)

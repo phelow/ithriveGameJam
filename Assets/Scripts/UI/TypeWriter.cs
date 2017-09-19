@@ -236,14 +236,18 @@ public class TypeWriter : MonoBehaviour
         {
             /* TO DO - Animate this transition */
             dialoguePanel.SetActive(false);
-
-            /* FINISHED PLAYING */
-            playing = false;
-			dialogueStart = true;
-            blur.SetActive(false);
-            LevelManager.s_instance.SetAdvanceButtonVisible(playing);
-            LevelManager.s_instance.ClearTalking();
+            
+            FinishedPlaying();
         }
+    }
+
+    private void FinishedPlaying() {
+        playing = false;
+        dialogueStart = true;
+        blur.SetActive(false);
+        LevelManager.s_instance.SetAdvanceButtonVisible(playing);
+        LevelManager.s_instance.ClearTalking();
+        Global.soundManager.StopCharacterMusic();
     }
 
     public void FinishCurrent()

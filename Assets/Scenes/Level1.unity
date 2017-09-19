@@ -577,6 +577,7 @@ MonoBehaviour:
   _characterBaseColor: {r: 0, g: 0, b: 0, a: 1}
   _colorInterpolationTime: 1
   _characterActiveColor: {r: 0, g: 0, b: 0, a: 0}
+  _characterMusic: {fileID: 0}
   isGhost: 0
   SecondsToDisappear: 0
 --- !u!212 &492862060
@@ -1207,6 +1208,11 @@ Prefab:
       propertyPath: _colorInterpolationTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 31d737fb4f68e634e8216c2edb8c8165, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3884599c3e719d7459428defc18865ed, type: 2}
   m_IsPrefabParent: 0
@@ -2711,6 +2717,11 @@ Prefab:
       propertyPath: isGhost
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: e564831de992f2c4db2ea36abcee71ff, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
   m_IsPrefabParent: 0

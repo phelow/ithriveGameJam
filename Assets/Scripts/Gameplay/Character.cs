@@ -34,6 +34,9 @@ public class Character : MonoBehaviour
     [SerializeField]
     private Color _characterActiveColor;
 
+    [SerializeField]
+    public AudioClip _characterMusic;
+
     public bool isGhost;
 
 
@@ -142,6 +145,10 @@ public class Character : MonoBehaviour
             _dialogIndex = 0;
         }
 
+        if(_characterMusic != null)
+        {
+            Global.soundManager.PlayCharacterMusic(_characterMusic);
+        }
 
         LevelManager.s_instance.SetTalking(_renderer.sprite);
     }
