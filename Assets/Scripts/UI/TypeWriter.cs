@@ -199,8 +199,14 @@ public class TypeWriter : MonoBehaviour
         textBox.text = sentences[currentPointer]._text;
         skip = false;
 
-        yield return new WaitForSeconds(sentences[currentPointer]._waitTime * 5);
+        float tPassed = 0.0f;
+        while(tPassed < sentences[currentPointer]._waitTime * 5 && !skip)
+        {
+            tPassed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
 
+        skip = false;
         NextText();
     }
 
