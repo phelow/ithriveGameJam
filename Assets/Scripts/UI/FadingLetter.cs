@@ -72,7 +72,7 @@ public class FadingLetter : MonoBehaviour
     {
         float tPassed = 0.0f;
         float targetTime = UnityEngine.Random.Range(0.3f, 1.5f);
-        Quaternion targetRotation = Quaternion.EulerRotation(0.0f, 0.0f, UnityEngine.Random.Range(-360.0f, 360.0f));
+        Quaternion targetRotation = Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(-360.0f, 360.0f));
 
         while (tPassed < targetTime)
         {
@@ -96,8 +96,8 @@ public class FadingLetter : MonoBehaviour
                 break;
             }
             _textMesh.transform.position += new Vector3(
-                UnityEngine.Random.RandomRange(-_spookiness, _spookiness),
-                UnityEngine.Random.RandomRange(-_spookiness, _spookiness),
+                UnityEngine.Random.Range(-_spookiness, _spookiness),
+                UnityEngine.Random.Range(-_spookiness, _spookiness),
                 0.0f);
             tLeft -= Time.deltaTime;
             yield return new WaitForEndOfFrame();

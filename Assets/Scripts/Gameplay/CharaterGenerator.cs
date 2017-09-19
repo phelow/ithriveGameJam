@@ -9,7 +9,7 @@ public class CharaterGenerator : MonoBehaviour {
 	public float duaration;
 	public float[] charaterStartTime;
 	public Vector3[] charaterPostions;
-	private int tempIndex = 0;
+	//private int tempIndex = 0;
 
 	// Use this for initialization
 	void Start () {

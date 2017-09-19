@@ -16,6 +16,7 @@ public class TypeWriter : MonoBehaviour
 
     private bool playing = false;
     private bool skip = false;
+	private bool dialogueStart = true;
     private bool _animateTextStarted = false;
 
     private Color _backgroundColorA;
@@ -44,9 +45,13 @@ public class TypeWriter : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (playing && Input.GetButtonDown("Fire1"))
         {
-            skip = true;
+			if(!dialogueStart) {
+				skip = true;
+			}else{
+				dialogueStart = false;
+			}
         }
     }
 
@@ -55,7 +60,7 @@ public class TypeWriter : MonoBehaviour
         if (!playing)
         {
             this.sentences = dialogue._sentences;
-
+			
             return PlayToEnd();
         }
         else
@@ -127,7 +132,7 @@ public class TypeWriter : MonoBehaviour
             Random.Range(0.1f, 1.0f),
             Random.Range(0.1f, 1.0f));
         _clearOffset = Random.Range(0.0f, 1.0f);
-        float whiteOffset = Random.Range(0.0f, 1.0f);
+        //float whiteOffset = Random.Range(0.0f, 1.0f);
         if (currentPointer > this.sentences.Count)
         {
             currentPointer = 0;
@@ -140,11 +145,12 @@ public class TypeWriter : MonoBehaviour
 
             string typedText = currentSentence.Substring(0, i);
             string trimmedString = currentSentence.Substring(i);
-
+            /*
             Color whiteShade = Color.Lerp(
                 Color.clear,
                 Color.white,
                 .6f + Mathf.PingPong(Time.time + whiteOffset, .4f));
+                */
             if (typedText.Length > 0)
             {
                 int substringStartIndex = Random.Range(0, i);
@@ -232,6 +238,7 @@ public class TypeWriter : MonoBehaviour
 
             /* FINISHED PLAYING */
             playing = false;
+			dialogueStart = true;
             blur.SetActive(false);
             LevelManager.s_instance.SetAdvanceButtonVisible(playing);
             LevelManager.s_instance.ClearTalking();
@@ -242,7 +249,7 @@ public class TypeWriter : MonoBehaviour
     {
         if (playing)
         {
-            //skip = true;
+            skip = true;
         }
     }
 

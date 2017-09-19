@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour {
-    private bool _triggered = false;
+    //private bool _triggered = false;
 
     [SerializeField]
     private SpriteRenderer _renderer;
@@ -21,7 +21,7 @@ public class Interactable : MonoBehaviour {
     {
         if(col.tag == "Player")
         {
-            _triggered = true;
+            //_triggered = true;
             TopDownCharacterController.s_instance.SetTriggeredObject(this);
             _renderer.color = Color.red;
         }
@@ -31,7 +31,7 @@ public class Interactable : MonoBehaviour {
     {
         if (col.tag == "Player")
         {
-            _triggered = false;
+            //_triggered = false;
             TopDownCharacterController.s_instance.SetTriggeredObject(null);
             _renderer.color = Color.white;
         }
