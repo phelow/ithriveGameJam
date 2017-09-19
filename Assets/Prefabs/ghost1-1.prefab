@@ -80,35 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogFileList:
   - {fileID: 4900000, guid: 45e573185b61d6c4d9ec2c7551d791fd, type: 3}
-  _audioClips:
-  - {fileID: 8300000, guid: a3fc5abc3253c1942a48658ace522961, type: 3}
-  - {fileID: 8300000, guid: a4f3b7939071f294097f617a57502c88, type: 3}
-  - {fileID: 8300000, guid: 7f645d94cf4df9940bbeea4eff730dbd, type: 3}
-  - {fileID: 8300000, guid: cd1a0b105557e324eb054c4f1ae108e5, type: 3}
-  - {fileID: 8300000, guid: 7446e5ecf7acf244f8c70ab394b3c4d7, type: 3}
-  - {fileID: 8300000, guid: 30ee124c9691e1d4a82824b89c49afb3, type: 3}
-  - {fileID: 8300000, guid: 3febc9ec273a1e648825be181ce47da3, type: 3}
-  - {fileID: 8300000, guid: ceabd77bcc8e8154881fc3bdfc60f8d2, type: 3}
-  - {fileID: 8300000, guid: 6d84daaede0a5534993306741668a236, type: 3}
-  - {fileID: 8300000, guid: 8c05e9872de93b343bfee43473ddd0cd, type: 3}
-  - {fileID: 8300000, guid: 91f509c9e3b24874caa4c82df70776e3, type: 3}
-  - {fileID: 8300000, guid: d1a6fba15130fa84cb03161ba2d647e5, type: 3}
-  - {fileID: 8300000, guid: 1b605aa121af4f646840123ad39e9f85, type: 3}
-  - {fileID: 8300000, guid: 86ec3f1c8f31c75468752313b7a65571, type: 3}
-  - {fileID: 8300000, guid: f8a19759d77117a47a86b3f25be47b9f, type: 3}
-  - {fileID: 8300000, guid: 40be3eefa51f65041a412eaf6f847ad5, type: 3}
-  - {fileID: 8300000, guid: 91a07847fbd79fd4f8d2f32638d43834, type: 3}
-  - {fileID: 8300000, guid: 7758c981839bd0242bc528055713aef9, type: 3}
-  - {fileID: 8300000, guid: a825cadd5e099a645b8e7b0322225b11, type: 3}
-  - {fileID: 8300000, guid: 1b605aa121af4f646840123ad39e9f85, type: 3}
-  - {fileID: 8300000, guid: 0cd2b5e7ebce72d4aa5b35d53d4a53db, type: 3}
-  - {fileID: 8300000, guid: 96ab6879fcabfde468fa7e47751520f6, type: 3}
-  - {fileID: 8300000, guid: 390eb65971f3bd346b411b519ea5137a, type: 3}
-  - {fileID: 8300000, guid: cbe906d4958e0634e9cdb9ff589816c7, type: 3}
-  - {fileID: 8300000, guid: 395aa039a335adb43a349a219f521955, type: 3}
-  - {fileID: 8300000, guid: c9c70b4528107d247b3b1c5d5145bceb, type: 3}
-  - {fileID: 8300000, guid: 995fcd7266cc92e49bf023b9876f7dbc, type: 3}
-  - {fileID: 8300000, guid: a592932d3573598458083784d9ea1a02, type: 3}
   _maximumAlpha: 1
   _minimumAlpha: 0.3
   _interpolationTime: 1
@@ -117,6 +88,7 @@ MonoBehaviour:
   _characterBaseColor: {r: 0, g: 0, b: 0, a: 1}
   _colorInterpolationTime: 1
   _characterActiveColor: {r: 0, g: 0, b: 0, a: 0}
+  isGhost: 1
 --- !u!212 &212055525196433358
 SpriteRenderer:
   m_ObjectHideFlags: 1

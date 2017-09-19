@@ -18,7 +18,7 @@ public class BootLoader : MonoBehaviour {
         //GameObject musicSource = GameObject.Find("Audio_Music");
 
         /* Create Managers */
-        Global.storyManager = new StoryManager();
+       
         Global.soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         Global.dialogueManager = new DialogueManager(dialogueUI);
 

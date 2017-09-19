@@ -582,6 +582,7 @@ MonoBehaviour:
   _characterBaseColor: {r: 0, g: 0, b: 0, a: 1}
   _colorInterpolationTime: 1
   _characterActiveColor: {r: 0, g: 0, b: 0, a: 0}
+  isGhost: 0
   SecondsToDisappear: 0
 --- !u!212 &492862060
 SpriteRenderer:
@@ -1170,6 +1171,46 @@ Prefab:
     - target: {fileID: 4106571294716850, guid: 3884599c3e719d7459428defc18865ed, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -35.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterBaseColor.r
+      value: 0.9294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterBaseColor.g
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterBaseColor.b
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterActiveColor.r
+      value: 0.928
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterActiveColor.g
+      value: 0.7647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterActiveColor.b
+      value: 0.073096864
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _startingOffset
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _colorInterpolationTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3884599c3e719d7459428defc18865ed, type: 2}
@@ -2679,6 +2720,11 @@ Prefab:
       propertyPath: _pedestal
       value: 
       objectReference: {fileID: 1426409417}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: isGhost
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
   m_IsPrefabParent: 0

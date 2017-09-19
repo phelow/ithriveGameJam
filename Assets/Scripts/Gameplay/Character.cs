@@ -34,17 +34,18 @@ public class Character : MonoBehaviour
     [SerializeField]
     private Color _characterActiveColor;
 
+    public bool isGhost;
+
 
     void Awake()
     {
+        _renderer = GetComponent<SpriteRenderer>();
         _dialogList = new List<Dialogue>();
         foreach (TextAsset text in _dialogFileList)
         {
             _dialogList.Add(Dialogue.DialogueFactory(text));
         }
-        _renderer = GetComponent<SpriteRenderer>();
-        StartCoroutine(InterpolateCharacters());
-        StartCoroutine(UpdateActiveColor());
+        
     }
 
     private IEnumerator UpdateActiveColor()
@@ -71,7 +72,7 @@ public class Character : MonoBehaviour
     private IEnumerator InterpolateCharacters()
     {
         yield return new WaitForSeconds(_startingOffset);
-
+        
         while (true)
         {
             float tPassed = 0.0f;
@@ -107,6 +108,12 @@ public class Character : MonoBehaviour
             _dialogIndex = Random.Range(0, _dialogList.Count);
         }else {
             _dialogIndex = 0;
+        }
+
+        if (isGhost)
+        {
+            StartCoroutine(InterpolateCharacters());
+            StartCoroutine(UpdateActiveColor());
         }
     }
 

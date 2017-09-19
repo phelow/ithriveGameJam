@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
@@ -52,7 +53,8 @@ public class LevelManager : MonoBehaviour
 
     public void Start()
     {
-
+        GetCharacters();
+        persons.Remove(GameObject.Find("dad").GetComponent<Dad>());
         ShowCharacters(persons);
         HideCharacters(ghosts);
     }
@@ -138,7 +140,14 @@ public class LevelManager : MonoBehaviour
         if (victory)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+            GetCharacters();
         }
+    }
+
+    private void GetCharacters() {
+        var characters = GameObject.FindObjectsOfType<Character>();
+        ghosts = characters.Where(x => x.isGhost).ToList<Character>();
+        persons = characters.Where(x => !x.isGhost).ToList<Character>();
     }
 
     public void SetTalking(Sprite sprite)
