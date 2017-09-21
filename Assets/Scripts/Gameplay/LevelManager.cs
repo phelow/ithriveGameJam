@@ -90,10 +90,11 @@ public class LevelManager : MonoBehaviour
                 _lightNight.SetActive(true);
                 HideCharacters(persons);
                 ShowCharacters(ghosts);
+                //EnableTalkForCharacters(ghosts);
 Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
                 break;
             case LevelStage.Night:
-                HideCharacters(ghosts);
+                //DisableTalkForCharacters(ghosts);
                 _currentStage = LevelStage.Morning;
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(true);
@@ -125,6 +126,20 @@ Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
         {
             c.gameObject.SetActive(true);
             c.ShowCharacter();
+        }
+    }
+
+    private void DisableTalkForCharacters(List<Character> chars) {
+        foreach(var c in chars)
+        {
+            c.DisableTalk();
+        }
+    }
+
+    private void EnableTalkForCharacters(List<Character> chars) {
+        foreach (var c in chars)
+        {
+            c.EnableTalk();
         }
     }
 

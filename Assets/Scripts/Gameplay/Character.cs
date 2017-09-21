@@ -18,6 +18,8 @@ public class Character : MonoBehaviour
     private float _minimumAlpha = 0.0f;
     [SerializeField]
     private float _interpolationTime = 1.0f;
+    [SerializeField]
+    private AnimationCurve alphaCurve;
 
     [SerializeField]
     private SpriteRenderer _renderer;
@@ -38,12 +40,13 @@ public class Character : MonoBehaviour
     public AudioClip _characterMusic;
 
     public bool isGhost;
-
+    private BoxCollider2D _collider;
 
     void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
         _dialogList = new List<Dialogue>();
+        _collider = GetComponent<BoxCollider2D>();
         foreach (TextAsset text in _dialogFileList)
         {
             _dialogList.Add(Dialogue.DialogueFactory(text));
@@ -75,28 +78,25 @@ public class Character : MonoBehaviour
     private IEnumerator InterpolateCharacters()
     {
         yield return new WaitForSeconds(_startingOffset);
+
+        float alpha;
         
         while (true)
         {
             float tPassed = 0.0f;
             while (tPassed < _interpolationTime)
             {
-                _renderer.color = Color.Lerp(
-                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _maximumAlpha),
-                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _minimumAlpha),
-                    tPassed / _interpolationTime);
 
+                alpha = (_minimumAlpha - _maximumAlpha) * alphaCurve.Evaluate(tPassed / _interpolationTime) + _maximumAlpha;
+                _renderer.color = new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, alpha);
                 tPassed += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
 
             while (tPassed > 0.0f)
             {
-                _renderer.color = Color.Lerp(
-                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _maximumAlpha),
-                    new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, _minimumAlpha),
-                    tPassed / _interpolationTime);
-
+                alpha = (_minimumAlpha - _maximumAlpha) * alphaCurve.Evaluate(tPassed / _interpolationTime) + _maximumAlpha;
+                _renderer.color = new Color(_characterActiveColor.r, _characterActiveColor.g, _characterActiveColor.b, alpha);
                 tPassed -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
@@ -153,4 +153,11 @@ public class Character : MonoBehaviour
         LevelManager.s_instance.SetTalking(_renderer.sprite);
     }
 
+    public void DisableTalk() {
+        _collider.enabled = false;
+    }
+
+    public void EnableTalk() {
+        _collider.enabled = true;
+    }
 }

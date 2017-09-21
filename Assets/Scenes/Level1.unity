@@ -584,6 +584,12 @@ MonoBehaviour:
   _maximumAlpha: 1
   _minimumAlpha: 1
   _interpolationTime: 1
+  alphaCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _renderer: {fileID: 0}
   _startingOffset: 0
   _characterBaseColor: {r: 0, g: 0, b: 0, a: 1}
@@ -2725,14 +2731,49 @@ Prefab:
       objectReference: {fileID: 1426409417}
     - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
         type: 2}
-      propertyPath: isGhost
-      value: 1
+      propertyPath: _startingOffset
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
         type: 2}
-      propertyPath: _characterMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: e564831de992f2c4db2ea36abcee71ff, type: 3}
+      propertyPath: _colorInterpolationTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _interpolationTime
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterActiveColor.r
+      value: 0.035467125
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterActiveColor.g
+      value: 0.60294116
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterActiveColor.b
+      value: 0.109825864
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterBaseColor.r
+      value: 0.03529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterBaseColor.g
+      value: 0.6039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterBaseColor.b
+      value: 0.10980393
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
   m_IsPrefabParent: 0

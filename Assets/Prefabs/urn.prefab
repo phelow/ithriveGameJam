@@ -231,11 +231,31 @@ MonoBehaviour:
   _maximumAlpha: 1
   _minimumAlpha: 0.3
   _interpolationTime: 1
+  alphaCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   _renderer: {fileID: 0}
   _startingOffset: 0
   _characterBaseColor: {r: 0, g: 0, b: 0, a: 1}
   _colorInterpolationTime: 1
   _characterActiveColor: {r: 0, g: 0, b: 0, a: 0}
+  _characterMusic: {fileID: 8300000, guid: e564831de992f2c4db2ea36abcee71ff, type: 3}
+  isGhost: 1
 --- !u!212 &212463030226872712
 SpriteRenderer:
   m_ObjectHideFlags: 1
