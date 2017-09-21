@@ -542,6 +542,21 @@ Prefab:
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114941638628474780, guid: 7718271edec7419459bc85dbfd8d624a,
+        type: 2}
+      propertyPath: _characterBaseColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114941638628474780, guid: 7718271edec7419459bc85dbfd8d624a,
+        type: 2}
+      propertyPath: _characterBaseColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114941638628474780, guid: 7718271edec7419459bc85dbfd8d624a,
+        type: 2}
+      propertyPath: _characterBaseColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7718271edec7419459bc85dbfd8d624a, type: 2}
   m_IsPrefabParent: 0
@@ -933,6 +948,31 @@ Prefab:
       propertyPath: _renderer
       value: 
       objectReference: {fileID: 1444532376}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterBaseColor.r
+      value: 0.45098042
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterBaseColor.g
+      value: 0.18431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterBaseColor.b
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _colorInterpolationTime
+      value: 2.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _characterMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: ba97a962cd761fe4880ad403aec9ce90, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3884599c3e719d7459428defc18865ed, type: 2}
   m_IsPrefabParent: 0
@@ -1099,11 +1139,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1709737728}
   m_Script: {fileID: 11500000, guid: b2aa7be02cec59b4184f4208a4d33e9f, type: 3}
---- !u!212 &1109709136 stripped
-SpriteRenderer:
-  m_PrefabParentObject: {fileID: 212994147944850278, guid: 6b94110c56cfa41499366cea79183218,
-    type: 2}
-  m_PrefabInternal: {fileID: 1839307883}
 --- !u!4 &1239508047 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4106571294716850, guid: 3884599c3e719d7459428defc18865ed,
@@ -1479,6 +1514,26 @@ Prefab:
       propertyPath: isGhost
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterBaseColor.r
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterBaseColor.g
+      value: 0.7843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterBaseColor.b
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 420b99a52e6d5504a86fa2c15a250c5e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
   m_IsPrefabParent: 0
@@ -1495,6 +1550,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1326762311}
     m_Modifications:
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _dialogFileList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4946497254485258, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12.6
@@ -1575,7 +1635,7 @@ Prefab:
         type: 2}
       propertyPath: _dialogFileList.Array.data[0]
       value: 
-      objectReference: {fileID: 4900000, guid: df5d83ae46600844ba35368cfcc43e2b, type: 3}
+      objectReference: {fileID: 4900000, guid: a74379c4a705bb44a81a8d4dcfcb9ee9, type: 3}
     - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
         type: 2}
       propertyPath: _dialogFileList.Array.data[1]
@@ -1606,7 +1666,7 @@ Prefab:
         type: 2}
       propertyPath: _renderer
       value: 
-      objectReference: {fileID: 1109709136}
+      objectReference: {fileID: 0}
     - target: {fileID: 4843357186635448, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_LocalPosition.z
       value: -2.75
@@ -1642,6 +1702,21 @@ Prefab:
         type: 2}
       propertyPath: isGhost
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _characterMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e3523f70c1fd8f4ab2672b576cf9bed, type: 3}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _minimumAlpha
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _interpolationTime
+      value: 4.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}

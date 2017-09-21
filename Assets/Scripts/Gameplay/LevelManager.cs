@@ -95,6 +95,7 @@ Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
                 break;
             case LevelStage.Night:
                 //DisableTalkForCharacters(ghosts);
+                HideCharacters(ghosts);
                 _currentStage = LevelStage.Morning;
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(true);
