@@ -46,10 +46,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private SpriteRenderer talking;
 
+    private Button _button;
+    private Text _buttonText;
+
     public void Awake()
     {
-        Button btn = GetComponent<Button>();
-        btn.onClick.AddListener(AdvanceState);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(AdvanceState);
+        _buttonText = _button.GetComponentInChildren<Text>();
+        _buttonText.text = "To Night";
         //_music.Play("Day Loop");
         s_instance = this;
     }
@@ -85,6 +90,7 @@ public class LevelManager : MonoBehaviour
         switch (_currentStage)
         {
             case LevelStage.Day:
+                _buttonText.text = "Move Urns";
                 _currentStage = LevelStage.Night;
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(false);
@@ -95,6 +101,7 @@ public class LevelManager : MonoBehaviour
 Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
                 break;
             case LevelStage.Night:
+                _buttonText.text = "Next Day";
                 //DisableTalkForCharacters(ghosts);
                 HideCharacters(ghosts);
                 _currentStage = LevelStage.Morning;
@@ -104,7 +111,11 @@ Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
                 Global.soundManager.PlayMusic(Global.soundManager.dayMusic);
                 break;
             case LevelStage.Morning:
-                CheckForEndOfGame();
+                _buttonText.text = "To Night";
+                if (CheckForEndOfGame())
+                {
+                    return;
+                }
                 _currentStage = LevelStage.Day;
                 _lightDay.SetActive(true);
                 _lightMorning.SetActive(false);
@@ -146,7 +157,7 @@ Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
     }
 
 
-    public void CheckForEndOfGame()
+    public bool CheckForEndOfGame()
     {
         Urn[] urns = GameObject.FindObjectsOfType<Urn>();
         bool victory = true;
@@ -169,7 +180,9 @@ Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
             
             
             SceneManager.LoadScene(nextScene);
+            return true;
         }
+        return false;
     }
 
     private void GetCharacters() {
