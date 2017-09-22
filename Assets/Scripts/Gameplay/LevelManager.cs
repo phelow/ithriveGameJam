@@ -112,14 +112,15 @@ public class LevelManager : MonoBehaviour
                 break;
             case LevelStage.Morning:
                 _buttonText.text = "To Night";
-                if (CheckForEndOfGame())
-                {
-                    return;
-                }
                 _currentStage = LevelStage.Day;
                 _lightDay.SetActive(true);
                 _lightMorning.SetActive(false);
                 _lightNight.SetActive(false);
+                if (CheckForEndOfGame())
+                {
+                    return;
+                }
+                
                 ShowCharacters(persons);
                 break;
         }
