@@ -64,26 +64,35 @@ public class SoundManager : MonoBehaviour
     public void DayToNight() {
         StopAllCoroutines();
         StartCoroutine(fadeTo(_musicSource, nightMusic, musicFadeSpeed));
+        if (_characterMusicSource.isPlaying)
+        {
+            StartCoroutine(fadeDown(_characterMusicSource, 0, musicFadeSpeed));
+        }
     }
 
     public void NightToDay() {
         StopAllCoroutines();
         StartCoroutine(fadeTo(_musicSource, dayMusic, musicFadeSpeed));
+        if (_characterMusicSource.isPlaying)
+        {
+            StartCoroutine(fadeDown(_characterMusicSource, 0, musicFadeSpeed));
+        }
     }
 
     public void PlayCharacterMusic(AudioClip clip) {
+        StopAllCoroutines();
+
         StartCoroutine(fadeDown(_musicSource, musicMinVolume, characterMusicFadeSpeed));
 
-        StartCoroutine(fadeTo(_characterMusicSource, clip, characterMusicFadeSpeed));
-
-        _characterMusicSource.Stop();
-        _characterMusicSource.clip = clip;
-        UpdateVolume(_characterMusicSource,0);
-        _characterMusicSource.time = _musicSource.time;
-        _characterMusicSource.loop = true;
-        _characterMusicSource.Play();
-
-        //StartCoroutine(fadeUp(_characterMusicSource, 1f, characterMusicFadeSpeed));
+        if (clip != _characterMusicSource.clip)
+        {
+            StartCoroutine(fadeTo(_characterMusicSource, clip, characterMusicFadeSpeed, true));
+            _characterMusicSource.loop = true;
+        }
+        else
+        {
+            StartCoroutine(fadeUp(_characterMusicSource, 1f, characterMusicFadeSpeed));
+        }
     }
 
     public void StopCharacterMusic() {
