@@ -120,7 +120,10 @@ public class TypeWriter : MonoBehaviour
 
     IEnumerator AnimateText()
     {
-        Global.soundManager.PlaySingleDialogue(Global.soundManager.voices[sentences[currentPointer]._soundIndex]);
+        int voiceIndex = sentences[currentPointer]._soundIndex;
+        if (voiceIndex >= 0) {
+            Global.soundManager.PlaySingleDialogue(Global.soundManager.voices[voiceIndex]);
+        }
         _animateTextStarted = true;
         skip = false;
         _backgroundColorA = new Color(
