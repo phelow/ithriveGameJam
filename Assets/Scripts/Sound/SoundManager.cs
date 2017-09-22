@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip nightMusic;
     public AudioClip dayMusic;
     public AudioClip[] voices;
+    public AudioClip[] sounds;
 
     private int listIndex;
     private bool listPlaying = false;
@@ -46,10 +47,12 @@ public class SoundManager : MonoBehaviour
     }
 
     public void DayToNight() {
+        StopAllCoroutines();
         StartCoroutine(fadeTo(_musicSource, nightMusic, musicFadeSpeed));
     }
 
     public void NightToDay() {
+        StopAllCoroutines();
         StartCoroutine(fadeTo(_musicSource, dayMusic, musicFadeSpeed));
     }
 
