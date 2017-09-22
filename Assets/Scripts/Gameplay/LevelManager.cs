@@ -41,6 +41,7 @@ public class LevelManager : MonoBehaviour
 
     public string nextScene;
     private int currentLevel;
+    public int maxLevel = 3;
 
     [SerializeField]
     private SpriteRenderer talking;
@@ -157,7 +158,16 @@ Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
         if (victory)
         {
             currentLevel++;
-            nextScene = "Level" + currentLevel.ToString();
+            if (currentLevel > maxLevel)
+            {
+                nextScene = "Win";
+            }
+            else
+            {
+                nextScene = "Level" + currentLevel.ToString();
+            }
+            
+            
             SceneManager.LoadScene(nextScene);
         }
     }
