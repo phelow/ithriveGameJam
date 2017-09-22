@@ -21,7 +21,7 @@ public class Sentence {
         string parsedText = splitLine[3];
         string [] extraWords = splitLine.Length > 0 ? splitLine[4].Split('*') : new string [] { };
 
-        int soundIndex = 0;
+        int soundIndex = -1;
         if(splitLine.Length > 5) {
             soundIndex = int.Parse(splitLine[5]);
         }

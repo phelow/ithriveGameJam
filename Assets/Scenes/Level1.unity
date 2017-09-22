@@ -2239,8 +2239,8 @@ GameObject:
   - component: {fileID: 931428683}
   - component: {fileID: 931428682}
   - component: {fileID: 931428686}
-  - component: {fileID: 931428687}
   - component: {fileID: 931428688}
+  - component: {fileID: 931428687}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -2304,14 +2304,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc11e3bcfe7f5904fa3859b0093ded92, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 129
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
