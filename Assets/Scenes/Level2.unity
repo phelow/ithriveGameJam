@@ -1553,7 +1553,7 @@ Prefab:
     - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
         type: 2}
       propertyPath: _dialogFileList.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4946497254485258, guid: 6b94110c56cfa41499366cea79183218, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1635,7 +1635,7 @@ Prefab:
         type: 2}
       propertyPath: _dialogFileList.Array.data[0]
       value: 
-      objectReference: {fileID: 4900000, guid: a74379c4a705bb44a81a8d4dcfcb9ee9, type: 3}
+      objectReference: {fileID: 4900000, guid: df5d83ae46600844ba35368cfcc43e2b, type: 3}
     - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
         type: 2}
       propertyPath: _dialogFileList.Array.data[1]

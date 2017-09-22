@@ -55,7 +55,6 @@ public class LevelManager : MonoBehaviour
         _button.onClick.AddListener(AdvanceState);
         _buttonText = _button.GetComponentInChildren<Text>();
         _buttonText.text = "To Night";
-        //_music.Play("Day Loop");
         s_instance = this;
     }
 
@@ -67,6 +66,7 @@ public class LevelManager : MonoBehaviour
         HideCharacters(ghosts);
         SceneManager.sceneLoaded += OnSceneLoaded;
         currentLevel = 1;
+        Global.soundManager.PlayMusic();
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
@@ -98,7 +98,7 @@ public class LevelManager : MonoBehaviour
                 HideCharacters(persons);
                 ShowCharacters(ghosts);
                 //EnableTalkForCharacters(ghosts);
-Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
+                Global.soundManager.DayToNight();
                 break;
             case LevelStage.Night:
                 _buttonText.text = "Next Day";
@@ -108,7 +108,7 @@ Global.soundManager.PlayMusic(Global.soundManager.nightMusic);
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(true);
                 _lightNight.SetActive(false);
-                Global.soundManager.PlayMusic(Global.soundManager.dayMusic);
+                Global.soundManager.NightToDay();
                 break;
             case LevelStage.Morning:
                 _buttonText.text = "To Night";

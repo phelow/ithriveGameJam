@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
     private float currentClipTime;
 
     private float fadeSpeed = 16;
+    private float musicFadeSpeed = 8;
 
     private float originalMusicVolume = 1f;
 
@@ -36,11 +37,20 @@ public class SoundManager : MonoBehaviour
         _dialogSource.PlayOneShot(clip);
     }
 
-    public void PlayMusic(AudioClip clip) {
+    public void PlayMusic() {
         _musicSource.Stop();
-        _musicSource.clip = clip;
+        _musicSource.clip = dayMusic;
         _musicSource.loop = true;
+        _musicSource.volume = originalMusicVolume;
         _musicSource.Play();
+    }
+
+    public void DayToNight() {
+        StartCoroutine(fadeTo(_musicSource, nightMusic, musicFadeSpeed));
+    }
+
+    public void NightToDay() {
+        StartCoroutine(fadeTo(_musicSource, dayMusic, musicFadeSpeed));
     }
 
     public void PlayCharacterMusic(AudioClip clip) {
@@ -74,24 +84,38 @@ public class SoundManager : MonoBehaviour
     }
 
     IEnumerator fadeUp (AudioSource source, float fadeTo, float speed) {
-        if(source.volume < fadeTo) {
+        while(source.volume < fadeTo) {
             source.volume += speed * Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
-        }else{
-            source.volume = fadeTo;
         }
+        source.volume = fadeTo;
     }
 
     IEnumerator fadeDown (AudioSource source, float fadeTo, float speed) {
-        if (source.volume > fadeTo) {
+        while(source.volume > fadeTo) {
             source.volume -= speed * Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
-        } else {
-            source.volume = fadeTo;
-            if(fadeTo == 0) {
-                source.Stop();
-            }
         }
+        source.volume = fadeTo;
+        if(fadeTo == 0) {
+            source.Stop();
+        }
+    }
+
+    IEnumerator fadeTo (AudioSource source, AudioClip clip, float speed) {
+        while (source.volume > 0) {
+            source.volume -= speed * Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        source.volume = 0;
+        source.Stop();
+        source.clip = clip;
+        source.Play();
+        while (source.volume < originalMusicVolume) {
+            source.volume += speed * Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        source.volume = originalMusicVolume;
     }
 
 }
