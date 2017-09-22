@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class SoundManager : MonoBehaviour
 {
     public AudioSource _soundSource;
@@ -18,13 +19,23 @@ public class SoundManager : MonoBehaviour
     private bool listPlaying = false;
     private float currentClipTime;
 
-    private float fadeSpeed = 16;
-    private float musicFadeSpeed = 8;
+    private float fadeSpeed = 8;
+    private float musicFadeSpeed = 2;
+    private float characterMusicFadeSpeed = 1;
 
-    private float originalMusicVolume = 1f;
+    private float musicMinVolume = .7f;
+    private float characterMusicMinVolume = .5f;
+
+
+    public float masterVolume = 1f;
+    private Dictionary<AudioSource, float> volumes = new Dictionary<AudioSource, float>();
+        
 
     private void Awake(){
-        
+        volumes.Add(_soundSource, 1f);
+        volumes.Add(_dialogSource, 1f);
+        volumes.Add(_musicSource, 1f);
+        volumes.Add(_characterMusicSource, 1f);
     }
 
     public void PlaySingleSound(AudioClip clip)
@@ -38,11 +49,15 @@ public class SoundManager : MonoBehaviour
         _dialogSource.PlayOneShot(clip);
     }
 
+    public void PlayRandomSwappingSound() {
+
+    }
+
     public void PlayMusic() {
         _musicSource.Stop();
         _musicSource.clip = dayMusic;
         _musicSource.loop = true;
-        _musicSource.volume = originalMusicVolume;
+        UpdateVolume(_musicSource);
         _musicSource.Play();
     }
 
@@ -57,68 +72,101 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayCharacterMusic(AudioClip clip) {
-        originalMusicVolume = _musicSource.volume;
+        StartCoroutine(fadeDown(_musicSource, musicMinVolume, characterMusicFadeSpeed));
 
-        StartCoroutine(fadeDown(_musicSource, originalMusicVolume * .8f, fadeSpeed * .2f));
-        
+        StartCoroutine(fadeTo(_characterMusicSource, clip, characterMusicFadeSpeed));
+
         _characterMusicSource.Stop();
         _characterMusicSource.clip = clip;
-        _characterMusicSource.volume = 0;
+        UpdateVolume(_characterMusicSource,0);
         _characterMusicSource.time = _musicSource.time;
         _characterMusicSource.loop = true;
         _characterMusicSource.Play();
 
-        StartCoroutine(fadeUp(_characterMusicSource, originalMusicVolume, fadeSpeed));
+        //StartCoroutine(fadeUp(_characterMusicSource, 1f, characterMusicFadeSpeed));
     }
 
     public void StopCharacterMusic() {
-        StartCoroutine(fadeDown(_characterMusicSource, 0, fadeSpeed));
-        StartCoroutine(fadeUp(_musicSource, originalMusicVolume, fadeSpeed * .2f));
+        StartCoroutine(fadeDown(_characterMusicSource, characterMusicMinVolume, characterMusicFadeSpeed));
+        StartCoroutine(fadeUp(_musicSource, 1f, characterMusicFadeSpeed));
     }
-
-    public void PlayRandomSound(List<AudioClip> L_clip) {
-    }
-
-    public void PlayRandomSwappingSound() {
-
-    }
-
-    public void Stop() {
-    }
-
+    
     IEnumerator fadeUp (AudioSource source, float fadeTo, float speed) {
-        while(source.volume < fadeTo) {
-            source.volume += speed * Time.fixedDeltaTime;
+        var currentVol = GetVolume(source);
+        
+        while (currentVol < fadeTo) {
+            currentVol += speed * Time.fixedDeltaTime;
+            UpdateVolume(source, currentVol);
             yield return new WaitForFixedUpdate();
         }
-        source.volume = fadeTo;
+        UpdateVolume(source, fadeTo);
     }
 
     IEnumerator fadeDown (AudioSource source, float fadeTo, float speed) {
-        while(source.volume > fadeTo) {
-            source.volume -= speed * Time.fixedDeltaTime;
+        var currentVol = GetVolume(source);
+
+        while (currentVol > fadeTo) {
+            currentVol -= speed * Time.fixedDeltaTime;
+            UpdateVolume(source, currentVol);
             yield return new WaitForFixedUpdate();
         }
-        source.volume = fadeTo;
+        UpdateVolume(source,fadeTo);
         if(fadeTo == 0) {
             source.Stop();
         }
     }
 
-    IEnumerator fadeTo (AudioSource source, AudioClip clip, float speed) {
-        while (source.volume > 0) {
-            source.volume -= speed * Time.fixedDeltaTime;
+    IEnumerator fadeTo (AudioSource source, AudioClip clip, float speed, bool keepTime = false) {
+        var currentVol = GetVolume(source);
+
+        while (currentVol > 0) {
+            currentVol -= speed * Time.fixedDeltaTime;
+            UpdateVolume(source, currentVol);
             yield return new WaitForFixedUpdate();
         }
-        source.volume = 0;
+        UpdateVolume(source, 0);
+        currentVol = 0;
+        var previousTime = source.time;
+
         source.Stop();
         source.clip = clip;
+        if (keepTime)
+        {
+            source.time = previousTime;
+        }
         source.Play();
-        while (source.volume < originalMusicVolume) {
-            source.volume += speed * Time.fixedDeltaTime;
+        while (currentVol < 1f) {
+            currentVol += speed * Time.fixedDeltaTime;
+            UpdateVolume(source, currentVol);
             yield return new WaitForFixedUpdate();
         }
-        source.volume = originalMusicVolume;
+        UpdateVolume(source);
+    }
+
+    public void SetVolumes(float master = 1f, float music = 1f, float effects = 1f) {
+        var musicVol = GetVolume(_musicSource);
+        var characterMusicVol = GetVolume(_characterMusicSource);
+        var soundVol = GetVolume(_soundSource);
+        var dialogVol = GetVolume(_dialogSource);
+
+        masterVolume = master;
+        volumes[_musicSource] = music;
+        volumes[_characterMusicSource] = music;
+        volumes[_soundSource] = effects;
+        volumes[_dialogSource] = effects;
+
+        UpdateVolume(_musicSource, musicVol);
+        UpdateVolume(_characterMusicSource, characterMusicVol);
+        UpdateVolume(_soundSource, soundVol);
+        UpdateVolume(_dialogSource, dialogVol);
+    }
+
+    private void UpdateVolume(AudioSource audio, float volume = 1f) {
+        audio.volume = volumes[audio] * masterVolume * volume;
+    }
+
+    private float GetVolume(AudioSource audio) {
+        return audio.volume / volumes[audio] / masterVolume;
     }
 
 }

@@ -1533,7 +1533,7 @@ Prefab:
         type: 2}
       propertyPath: _characterMusic
       value: 
-      objectReference: {fileID: 8300000, guid: 420b99a52e6d5504a86fa2c15a250c5e, type: 3}
+      objectReference: {fileID: 8300000, guid: 982030f494c0bec4d852203f9421bfd7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
   m_IsPrefabParent: 0

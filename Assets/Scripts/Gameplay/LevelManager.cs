@@ -56,6 +56,8 @@ public class LevelManager : MonoBehaviour
         _buttonText = _button.GetComponentInChildren<Text>();
         _buttonText.text = "To Night";
         s_instance = this;
+
+        Global.soundManager.PlayMusic();
     }
 
     public void Start()
@@ -66,7 +68,7 @@ public class LevelManager : MonoBehaviour
         HideCharacters(ghosts);
         SceneManager.sceneLoaded += OnSceneLoaded;
         currentLevel = 1;
-        Global.soundManager.PlayMusic();
+        
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
