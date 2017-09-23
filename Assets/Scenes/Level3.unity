@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225455cd961cae546a5e8ecbd2f2a6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetUrn: {fileID: 96751957}
+  _targetUrn: {fileID: 1839307887}
 --- !u!1001 &267450887
 Prefab:
   m_ObjectHideFlags: 0
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225455cd961cae546a5e8ecbd2f2a6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetUrn: {fileID: 1839307887}
+  _targetUrn: {fileID: 96751957}
 --- !u!1001 &456681741
 Prefab:
   m_ObjectHideFlags: 0

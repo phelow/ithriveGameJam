@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
     //private int _daysPassed;
 
     public string nextScene;
-    private int currentLevel;
+    private int nextLevel;
     public int maxLevel = 3;
 
     [SerializeField]
@@ -48,6 +48,11 @@ public class LevelManager : MonoBehaviour
 
     private Button _button;
     private Text _buttonText;
+
+    private bool isWaitingForNextLevel = false;
+    private bool isLoadingNextLevel = false;
+
+    public GameObject loadingText;
 
     public void Awake()
     {
@@ -67,8 +72,8 @@ public class LevelManager : MonoBehaviour
         ShowCharacters(persons);
         HideCharacters(ghosts);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        currentLevel = 1;
-        
+        nextLevel = 2;
+        nextScene = "Level" + nextLevel;
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
@@ -171,18 +176,7 @@ public class LevelManager : MonoBehaviour
 
         if (victory)
         {
-            currentLevel++;
-            if (currentLevel > maxLevel)
-            {
-                nextScene = "Win";
-            }
-            else
-            {
-                nextScene = "Level" + currentLevel.ToString();
-            }
-            
-            
-            SceneManager.LoadScene(nextScene);
+            isWaitingForNextLevel = true;
             return true;
         }
         return false;
@@ -206,8 +200,44 @@ public class LevelManager : MonoBehaviour
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        Debug.Log("Loading SCENE: " + scene.name);
         GetCharacters();
         ShowCharacters(persons);
         HideCharacters(ghosts);
+        isLoadingNextLevel = false;
+        nextLevel++;
+        isWaitingForNextLevel = false;
+        if (nextLevel > maxLevel)
+        {
+            nextScene = "Win";
+        }
+        else
+        {
+            nextScene = "Level" + nextLevel.ToString();
+        }
+    }
+
+    IEnumerator LoadLevel() {
+        var async = SceneManager.LoadSceneAsync(nextScene);
+        async.allowSceneActivation = false;
+
+        while (!isWaitingForNextLevel)
+        {
+            yield return null;
+        }
+
+        async.allowSceneActivation = true;
+    }
+
+    private void Update() {
+        if (!isLoadingNextLevel)
+        {
+            isLoadingNextLevel = true;
+            StartCoroutine(LoadLevel());
+        }
+        if (isWaitingForNextLevel)
+        {
+            loadingText.SetActive(true);
+        }
     }
 }
