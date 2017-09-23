@@ -207,6 +207,7 @@ public class LevelManager : MonoBehaviour
         isLoadingNextLevel = false;
         nextLevel++;
         isWaitingForNextLevel = false;
+        loadingText.SetActive(false);
         if (nextLevel > maxLevel)
         {
             nextScene = "Win";
@@ -225,7 +226,7 @@ public class LevelManager : MonoBehaviour
         {
             yield return null;
         }
-
+        
         async.allowSceneActivation = true;
     }
 
