@@ -10,6 +10,7 @@ public class Sentence {
     public float _spookiness;
     public string[] _words;
     public int _soundIndex;
+    private float _minWait = .5f;
 
     public static Sentence ParseLine(string text)
     {
@@ -34,7 +35,7 @@ public class Sentence {
     {
         this._text = text;
         this._speed = speed;
-        this._waitTime = waitTime;
+        this._waitTime = waitTime + _minWait;
         this._spookiness = spookiness;
         this._words = extraWords;
         this._soundIndex = soundIndex;
