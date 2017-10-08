@@ -210,7 +210,7 @@ public class LevelManager : MonoBehaviour
         loadingText.SetActive(false);
         if (nextLevel > maxLevel)
         {
-            nextScene = "Win";
+            nextScene = "Credits";
         }
         else
         {
