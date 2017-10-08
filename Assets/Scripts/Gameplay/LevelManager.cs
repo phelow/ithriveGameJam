@@ -55,6 +55,7 @@ public class LevelManager : MonoBehaviour
 
     public GameObject loadingText;
     private AsyncOperation async;
+    
 
     public void Awake()
     {
@@ -202,14 +203,15 @@ public class LevelManager : MonoBehaviour
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        Debug.Log("Loading SCENE: " + scene.name);
+        isWaitingForNextLevel = false;
+        isLoadingNextLevel = false;
+        loadingText.SetActive(false);
+        
         GetCharacters();
         ShowCharacters(persons);
         HideCharacters(ghosts);
-        isLoadingNextLevel = false;
         nextLevel++;
-        isWaitingForNextLevel = false;
-        loadingText.SetActive(false);
+        
         if (nextLevel > maxLevel)
         {
             nextScene = "Credits";
@@ -230,6 +232,10 @@ public class LevelManager : MonoBehaviour
         }
         StopCoroutine(LoadingProgress());
         async.allowSceneActivation = true;
+        if(nextLevel > maxLevel)
+        {
+            _button.gameObject.SetActive(false);
+        }
     }
 
     IEnumerator LoadingProgress() {
@@ -245,6 +251,10 @@ public class LevelManager : MonoBehaviour
     }
 
     private void Update() {
+        if(SceneManager.GetActiveScene().name == "Credits")
+        {
+            return;
+        }
         if (!isLoadingNextLevel)
         {
             isLoadingNextLevel = true;
