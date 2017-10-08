@@ -25,6 +25,7 @@ public class Urn : MonoBehaviour
     public List<AudioClip> _soundSwap;
     private static bool s_urnsLocked = false;
 
+    private float urnMoveTime = .4f;
 
     // Use this for initialization
     private void Awake()
@@ -127,7 +128,7 @@ public class Urn : MonoBehaviour
     {
         s_urnsLocked = true;
         float tPassed = 0.0f;
-        float totalLerpTime = 1.0f;
+        float totalLerpTime = urnMoveTime;
         while (tPassed < totalLerpTime)
         {
             transform.position = 
@@ -137,7 +138,7 @@ public class Urn : MonoBehaviour
         }
 
         tPassed = 0.0f;
-        totalLerpTime = 1.0f;
+        totalLerpTime = urnMoveTime;
         while (tPassed < totalLerpTime)
         {
             transform.position =

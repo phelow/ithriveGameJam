@@ -6,52 +6,54 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour {
 
-    private bool isWaitingForLevel = false;
-    private bool isLoading = false;
-    private string level1Name = "Level1";
+    private bool isWaitingForNextLevel = false;
+    private bool isLoadingNextLevel = false;
+    private string nextScene = "Level1";
+    private AsyncOperation async;
 
     public GameObject loadingText;
 
-    public void Awake() {
-        // SceneManager.sceneLoaded += OnSceneLoaded;
-        
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (isWaitingForLevel)
-        {
-            SceneManager.SetActiveScene(scene);
-        }
-    }
-
-    IEnumerator LoadLevel() {
-        var async = SceneManager.LoadSceneAsync(level1Name);
-        async.allowSceneActivation = false;
-       
-        while (!isWaitingForLevel)
-        {
-            yield return null;
-        }
-        
-        async.allowSceneActivation = true;
-    }
 
     public void startButton()
     {
-        var scene = SceneManager.GetSceneByName(level1Name);
-        isWaitingForLevel = true;
+        var scene = SceneManager.GetSceneByName(nextScene);
+        isWaitingForNextLevel = true;
+    }
+
+    IEnumerator LoadLevel() {
+        async = SceneManager.LoadSceneAsync(nextScene);
+        async.allowSceneActivation = false;
+
+        while (!isWaitingForNextLevel)
+        {
+            yield return null;
+        }
+        StopCoroutine(LoadingProgress());
+        async.allowSceneActivation = true;
+    }
+
+    IEnumerator LoadingProgress() {
+        var text = loadingText.GetComponent<TMPro.TextMeshProUGUI>();
+        var str = "Loading... ";
+        while (isWaitingForNextLevel)
+        {
+            str = String.Format("Loading... {0:p0}", async.progress);
+
+            text.text = str;
+            yield return null;
+        }
     }
 
     private void Update() {
-        if (!isLoading)
+        if (!isLoadingNextLevel)
         {
+            isLoadingNextLevel = true;
             StartCoroutine(LoadLevel());
-            isLoading = true;
         }
-        
-        if(isWaitingForLevel == true)
+        if (isWaitingForNextLevel && !loadingText.activeSelf)
         {
             loadingText.SetActive(true);
+            StartCoroutine(LoadingProgress());
         }
     }
 
