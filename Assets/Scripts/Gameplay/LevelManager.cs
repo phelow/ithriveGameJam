@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -53,6 +54,7 @@ public class LevelManager : MonoBehaviour
     private bool isLoadingNextLevel = false;
 
     public GameObject loadingText;
+    private AsyncOperation async;
 
     public void Awake()
     {
@@ -219,15 +221,27 @@ public class LevelManager : MonoBehaviour
     }
 
     IEnumerator LoadLevel() {
-        var async = SceneManager.LoadSceneAsync(nextScene);
+        async = SceneManager.LoadSceneAsync(nextScene);
         async.allowSceneActivation = false;
 
         while (!isWaitingForNextLevel)
         {
             yield return null;
         }
-        
+        StopCoroutine(LoadingProgress());
         async.allowSceneActivation = true;
+    }
+
+    IEnumerator LoadingProgress() {
+        var text = loadingText.GetComponent<TMPro.TextMeshProUGUI>();
+        var str = "Loading... ";
+        while (isWaitingForNextLevel)
+        {
+            str = String.Format("Loading... {0:p0}", async.progress);
+            
+            text.text = str;
+            yield return null;
+        }
     }
 
     private void Update() {
@@ -236,9 +250,10 @@ public class LevelManager : MonoBehaviour
             isLoadingNextLevel = true;
             StartCoroutine(LoadLevel());
         }
-        if (isWaitingForNextLevel)
+        if (isWaitingForNextLevel && !loadingText.activeSelf)
         {
             loadingText.SetActive(true);
+            StartCoroutine(LoadingProgress());
         }
     }
 }
