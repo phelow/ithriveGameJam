@@ -32,10 +32,17 @@ public class SoundManager : MonoBehaviour
         
 
     private void Awake(){
+        if(Global.soundManager != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         volumes.Add(_soundSource, 1f);
         volumes.Add(_dialogSource, 1f);
         volumes.Add(_musicSource, 1f);
         volumes.Add(_characterMusicSource, 1f);
+        PlayMusic();
     }
 
     public void PlaySingleSound(AudioClip clip)
@@ -171,6 +178,7 @@ public class SoundManager : MonoBehaviour
     }
 
     private void UpdateVolume(AudioSource audio, float volume = 1f) {
+        
         audio.volume = volumes[audio] * masterVolume * volume;
     }
 

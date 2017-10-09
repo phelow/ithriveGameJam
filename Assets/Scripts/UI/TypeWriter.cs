@@ -35,6 +35,11 @@ public class TypeWriter : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        if(s_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         s_instance = this;
         AnimateTextRoutine = AnimateText();
         dialoguePanel.SetActive(false);

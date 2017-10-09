@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DialogueManager {
+public class DialogueManager:MonoBehaviour {
 
     private TypeWriter dialogueUI;
 
-	public DialogueManager(GameObject dialogueUI) {
-        this.dialogueUI = dialogueUI.GetComponent<TypeWriter>();
+    private void Awake() {
+        if(Global.dialogueManager != this)
+        {
+            Destroy(gameObject);
+        }
+        this.dialogueUI = GetComponent<TypeWriter>();
     }
-
+    
 
     public bool PlayDialogue (Dialogue d) {
         return dialogueUI.PlayDialogue(d);

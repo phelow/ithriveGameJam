@@ -59,24 +59,35 @@ public class LevelManager : MonoBehaviour
 
     public void Awake()
     {
+        if(s_instance != null)
+        {
+            Destroy(transform.parent.gameObject);
+            Destroy(gameObject);
+            return;
+        }
+
+        talking = GameObject.Find("talking").GetComponent<SpriteRenderer>();
         _button = GetComponent<Button>();
         _button.onClick.AddListener(AdvanceState);
         _buttonText = _button.GetComponentInChildren<Text>();
         _buttonText.text = "To Night";
         s_instance = this;
 
-        Global.soundManager.PlayMusic();
+        //Global.soundManager.PlayMusic();
     }
 
     public void Start()
     {
+        nextLevel = Convert.ToInt16(SceneManager.GetActiveScene().name.Last().ToString());
+        UpdateNextLevel();
+
         GetCharacters();
-        persons.Remove(GameObject.Find("dad").GetComponent<Dad>());
+        //persons.Remove(GameObject.Find("dad").GetComponent<Dad>());
         ShowCharacters(persons);
         HideCharacters(ghosts);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        nextLevel = 2;
-        nextScene = "Level" + nextLevel;
+        
+        
     }
 
     public void SetAdvanceButtonVisible(bool shouldBeOff)
@@ -206,12 +217,15 @@ public class LevelManager : MonoBehaviour
         isWaitingForNextLevel = false;
         isLoadingNextLevel = false;
         loadingText.SetActive(false);
-        
+
         GetCharacters();
         ShowCharacters(persons);
         HideCharacters(ghosts);
+        UpdateNextLevel();
+    }
+
+    private void UpdateNextLevel() {
         nextLevel++;
-        
         if (nextLevel > maxLevel)
         {
             nextScene = "Credits";
