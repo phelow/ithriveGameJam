@@ -41,12 +41,16 @@ public class Character : MonoBehaviour
 
     public bool isGhost;
     private BoxCollider2D _collider;
+    
+    [SerializeField]
+    private Color mouseOverColor;
 
     void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
         _dialogList = new List<Dialogue>();
         _collider = GetComponent<BoxCollider2D>();
+        
         foreach (TextAsset text in _dialogFileList)
         {
             _dialogList.Add(Dialogue.DialogueFactory(text));
@@ -126,6 +130,13 @@ public class Character : MonoBehaviour
     private void OnMouseDown()
     {
         Talk();
+    }
+
+    private void OnMouseEnter() {
+        _renderer.transform.localScale = Vector3.Scale(new Vector3(1.1f, 1.1f), _renderer.transform.localScale);
+    }
+    private void OnMouseExit() {
+        _renderer.transform.localScale = Vector3.Scale(new Vector3(.9f, .9f), _renderer.transform.localScale);
     }
 
     public void Talk()

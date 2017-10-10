@@ -64,6 +64,21 @@ public class Urn : MonoBehaviour
         OnInteraction();
     }
 
+    private void OnMouseEnter() {
+        if(s_urnsLocked || LevelManager.s_instance.GetStage() != LevelManager.LevelStage.Morning)
+        {
+            return;
+        }
+        spriteRenderer.transform.localScale = Vector3.Scale(new Vector3(1.1f, 1.1f), spriteRenderer.transform.localScale);
+    }
+    private void OnMouseExit() {
+        if (s_urnsLocked || LevelManager.s_instance.GetStage() != LevelManager.LevelStage.Morning)
+        {
+            return;
+        }
+        spriteRenderer.transform.localScale = Vector3.Scale(new Vector3(.9f, .9f), spriteRenderer.transform.localScale);
+    }
+
     public bool VictoryCheck()
     {
         return _pedestal.VictoryCheck(this);
@@ -109,6 +124,7 @@ public class Urn : MonoBehaviour
             _heldObject._pedestal = savedPedestal;
 
             holdable.spriteRenderer.color = Color.white;
+            holdable.spriteRenderer.transform.localScale = Vector3.Scale(new Vector3(.9f, .9f), holdable.spriteRenderer.transform.localScale);
             _heldObject.spriteRenderer.color = Color.white;
             Vector3 newPosition = _heldObject.transform.position;
             _heldObject.StartCoroutine(_heldObject.MoveUrnToPosition(
