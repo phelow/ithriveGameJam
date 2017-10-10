@@ -26,12 +26,14 @@ public class Urn : MonoBehaviour
     private static bool s_urnsLocked = false;
 
     private float urnMoveTime = .4f;
+    private Vector3 originalScale;
 
     // Use this for initialization
     private void Awake()
     {
         s_urnsLocked = false;
         _originalColor = spriteRenderer.color;
+        originalScale = spriteRenderer.transform.localScale;
     }
 
     private void ClearHeldObject()
@@ -76,7 +78,7 @@ public class Urn : MonoBehaviour
         {
             return;
         }
-        spriteRenderer.transform.localScale = Vector3.Scale(new Vector3(.9f, .9f), spriteRenderer.transform.localScale);
+        spriteRenderer.transform.localScale = originalScale;
     }
 
     public bool VictoryCheck()
@@ -124,7 +126,7 @@ public class Urn : MonoBehaviour
             _heldObject._pedestal = savedPedestal;
 
             holdable.spriteRenderer.color = Color.white;
-            holdable.spriteRenderer.transform.localScale = Vector3.Scale(new Vector3(.9f, .9f), holdable.spriteRenderer.transform.localScale);
+            holdable.spriteRenderer.transform.localScale = originalScale;
             _heldObject.spriteRenderer.color = Color.white;
             Vector3 newPosition = _heldObject.transform.position;
             _heldObject.StartCoroutine(_heldObject.MoveUrnToPosition(
