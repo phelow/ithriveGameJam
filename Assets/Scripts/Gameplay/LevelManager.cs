@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
     public static float ghostFadeAlpha = .35f;
     private Coroutine coroutineFlash;
     bool hasEveryoneTalked;
-    bool hasFlashedButton;
+    
 
     public void Awake() {
         if (s_instance != null)
@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
         StartLights();
 
         hasEveryoneTalked = false;
-        hasFlashedButton = false;
+        
     }
     
 
@@ -112,7 +112,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
             }
             
         }
-        hasFlashedButton = true;
+        
         coroutineFlash = StartCoroutine(FlashButton());
     }
 
@@ -357,7 +357,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
             i++;
             if (i % 2 == 0)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
             }
         }
         
