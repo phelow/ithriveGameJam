@@ -126,6 +126,9 @@ MonoBehaviour:
   _soundSwap:
   - {fileID: 8300000, guid: c9086401617a4c14ab9faf8bd18e86c6, type: 3}
   - {fileID: 8300000, guid: f3e39f4b9ecb6c246b1806d9ab1ac898, type: 3}
+  ghostPosition: {x: 0, y: 0, z: 0}
+  ghostScale: {x: 0, y: 0, z: 0}
+  ghostRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &69114781
 Transform:
   m_ObjectHideFlags: 0
@@ -1119,6 +1122,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1581526074897988, guid: 3e18d96fdba7427499f21cac920f65e5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e18d96fdba7427499f21cac920f65e5, type: 2}
   m_IsPrefabParent: 0
@@ -1588,6 +1595,10 @@ Prefab:
     - target: {fileID: 4537651539855892, guid: 570041fff2c4c4f44ad947e407e6343b, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430127391673416, guid: 570041fff2c4c4f44ad947e407e6343b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 570041fff2c4c4f44ad947e407e6343b, type: 2}

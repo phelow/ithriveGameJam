@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,9 +42,8 @@ public class Character : MonoBehaviour
 
     public bool isGhost;
     private BoxCollider2D _collider;
-    
-    [SerializeField]
-    private Color mouseOverColor;
+
+    private float fadeTime = 10f;
 
     void Awake()
     {
@@ -112,7 +112,7 @@ public class Character : MonoBehaviour
     {
         /*_dialog = _dialogList[Random.Range(0, _dialogList.Count)];*/
         if (_dialogList.Count > 1) {
-            _dialogIndex = Random.Range(0, _dialogList.Count);
+            _dialogIndex = UnityEngine.Random.Range(0, _dialogList.Count);
         }else {
             _dialogIndex = 0;
         }
@@ -166,9 +166,30 @@ public class Character : MonoBehaviour
 
     public void DisableTalk() {
         _collider.enabled = false;
+        
     }
 
     public void EnableTalk() {
         _collider.enabled = true;
+    }
+    
+    public void Fade(float alpha, float time) {
+        StopAllCoroutines();
+        StartCoroutine(FadeOut(alpha, time));
+    }
+
+    private IEnumerator FadeOut(float a, float t) {
+        float alpha = _renderer.color.a;
+        float startA = alpha;
+        float time = t * (_maximumAlpha - alpha);
+        float tPassed = 0f;
+
+        while (tPassed < time)
+        {
+            alpha = startA - alphaCurve.Evaluate(tPassed / time)*(startA -a);
+            _renderer.color = new Color(1f, 1f, 1f, alpha);
+            tPassed += Time.deltaTime;
+            yield return null;
+        }
     }
 }

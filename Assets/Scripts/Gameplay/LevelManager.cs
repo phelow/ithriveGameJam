@@ -55,7 +55,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject loadingText;
     private AsyncOperation async;
-    
+
+    public static float ghostFadeAlpha = .35f;
 
     public void Awake()
     {
@@ -72,6 +73,14 @@ public class LevelManager : MonoBehaviour
         _buttonText = _button.GetComponentInChildren<Text>();
         _buttonText.text = "To Night";
         s_instance = this;
+
+        _lightDay = GameObject.Find("#LIGHT_Day");
+        _lightMorning = GameObject.Find("#LIGHT_Morning");
+        _lightNight = GameObject.Find("#LIGHT_Night");
+
+        _lightDay.SetActive(true);
+        _lightMorning.SetActive(false);
+        _lightNight.SetActive(false);
 
         //Global.soundManager.PlayMusic();
     }
@@ -118,13 +127,14 @@ public class LevelManager : MonoBehaviour
                 _lightNight.SetActive(true);
                 HideCharacters(persons);
                 ShowCharacters(ghosts);
-                //EnableTalkForCharacters(ghosts);
+                EnableTalkForCharacters(ghosts);
                 Global.soundManager.DayToNight();
                 break;
             case LevelStage.Night:
                 _buttonText.text = "Next Day";
-                //DisableTalkForCharacters(ghosts);
-                HideCharacters(ghosts);
+                DisableTalkForCharacters(ghosts);
+                FadeOutGhosts();
+                //HideCharacters(ghosts);
                 _currentStage = LevelStage.Morning;
                 _lightDay.SetActive(false);
                 _lightMorning.SetActive(true);
@@ -141,9 +151,16 @@ public class LevelManager : MonoBehaviour
                 {
                     return;
                 }
-                
+                HideCharacters(ghosts);
                 ShowCharacters(persons);
                 break;
+        }
+    }
+
+    private void FadeOutGhosts() {
+       foreach(var g in ghosts)
+        {
+            g.Fade(ghostFadeAlpha, 10f);
         }
     }
 
