@@ -58,9 +58,8 @@ public class LevelManager : MonoBehaviour
 
     public static float ghostFadeAlpha = .35f;
 
-    public void Awake()
-    {
-        if(s_instance != null)
+    public void Awake() {
+        if (s_instance != null)
         {
             Destroy(transform.parent.gameObject);
             Destroy(gameObject);
@@ -74,15 +73,18 @@ public class LevelManager : MonoBehaviour
         _buttonText.text = "To Night";
         s_instance = this;
 
+        StartCoroutine(FlashButton());
+        StartLights();
+        
+    }
+
+    private void StartLights() {
         _lightDay = GameObject.Find("#LIGHT_Day");
         _lightMorning = GameObject.Find("#LIGHT_Morning");
         _lightNight = GameObject.Find("#LIGHT_Night");
-
         _lightDay.SetActive(true);
         _lightMorning.SetActive(false);
         _lightNight.SetActive(false);
-
-        //Global.soundManager.PlayMusic();
     }
 
     public void Start()
@@ -129,6 +131,7 @@ public class LevelManager : MonoBehaviour
                 ShowCharacters(ghosts);
                 EnableTalkForCharacters(ghosts);
                 Global.soundManager.DayToNight();
+                
                 break;
             case LevelStage.Night:
                 _buttonText.text = "Next Day";
@@ -234,11 +237,17 @@ public class LevelManager : MonoBehaviour
         isWaitingForNextLevel = false;
         isLoadingNextLevel = false;
         loadingText.SetActive(false);
+        if (nextLevel > maxLevel)
+        {
+            return;
+        }
 
         GetCharacters();
         ShowCharacters(persons);
         HideCharacters(ghosts);
+        StartLights();
         UpdateNextLevel();
+        
     }
 
     private void UpdateNextLevel() {
@@ -279,6 +288,34 @@ public class LevelManager : MonoBehaviour
             text.text = str;
             yield return null;
         }
+    }
+
+    IEnumerator FlashButton() {
+        var startColor = _button.colors.normalColor;
+        var endColor = Color.black;
+        float t = .25f;
+        float tPassed = 0f;
+        var cb = _button.colors;
+
+        while (true)
+        {
+            while (tPassed < t)
+            {
+                cb.normalColor = Color.Lerp(startColor, endColor, tPassed / t);
+                _button.colors = cb;
+                tPassed += Time.deltaTime;
+                yield return null;
+            }
+
+            while (tPassed > 0f)
+            {
+                cb.normalColor = Color.Lerp(startColor, endColor, tPassed / t);
+                _button.colors = cb;
+                tPassed -= Time.deltaTime;
+                yield return null;
+            }
+        }
+        
     }
 
     private void Update() {

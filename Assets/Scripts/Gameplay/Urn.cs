@@ -26,7 +26,7 @@ public class Urn : MonoBehaviour
     public List<AudioClip> _soundSwap;
     private static bool s_urnsLocked = false;
 
-    private float urnMoveTime = .8f;
+    private float urnMoveTime = .5f;
     
     private Vector3 originalScale;
 

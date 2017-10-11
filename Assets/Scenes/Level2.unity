@@ -1365,6 +1365,36 @@ Prefab:
       propertyPath: persons.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114960720789693338, guid: c1375eb228b75b742ab2ff13d83718ef,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114960720789693338, guid: c1375eb228b75b742ab2ff13d83718ef,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114960720789693338, guid: c1375eb228b75b742ab2ff13d83718ef,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114730162695294272, guid: c1375eb228b75b742ab2ff13d83718ef,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114730162695294272, guid: c1375eb228b75b742ab2ff13d83718ef,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114730162695294272, guid: c1375eb228b75b742ab2ff13d83718ef,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1375eb228b75b742ab2ff13d83718ef, type: 2}
   m_IsPrefabParent: 0
