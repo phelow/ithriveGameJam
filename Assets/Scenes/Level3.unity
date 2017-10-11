@@ -520,7 +520,17 @@ Prefab:
     - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
         type: 2}
       propertyPath: _interpolationTime
-      value: 4.2
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _startingOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _colorInterpolationTime
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
@@ -1683,6 +1693,11 @@ Prefab:
       propertyPath: _interpolationTime
       value: 4.6
       objectReference: {fileID: 0}
+    - target: {fileID: 114320010922686816, guid: 3884599c3e719d7459428defc18865ed,
+        type: 2}
+      propertyPath: _startingOffset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3884599c3e719d7459428defc18865ed, type: 2}
   m_IsPrefabParent: 0
@@ -2320,6 +2335,16 @@ Prefab:
       propertyPath: _interpolationTime
       value: 3.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _startingOffset
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _colorInterpolationTime
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
   m_IsPrefabParent: 0
@@ -2527,6 +2552,16 @@ Prefab:
         type: 2}
       propertyPath: _interpolationTime
       value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _startingOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317519207349370, guid: 6b94110c56cfa41499366cea79183218,
+        type: 2}
+      propertyPath: _colorInterpolationTime
+      value: 4.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b94110c56cfa41499366cea79183218, type: 2}
