@@ -60,6 +60,8 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
     public static float ghostFadeAlpha = .35f;
     private Coroutine coroutineFlash;
     bool hasEveryoneTalked;
+
+    private GameObject settingsButton;
     
 
     public void Awake() {
@@ -79,11 +81,17 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
         _buttonText.text = "To Night";
         s_instance = this;
 
+        settingsButton = GameObject.Find("Settings Button");
+
         StartCoroutine(CheckIfCharactersTalked());
         StartLights();
 
         hasEveryoneTalked = false;
         
+    }
+
+    public bool IsSettingsOpen() {
+        return !settingsButton.activeSelf;
     }
     
 

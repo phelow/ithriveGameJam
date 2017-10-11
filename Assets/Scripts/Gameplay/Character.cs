@@ -142,7 +142,7 @@ public class Character : MonoBehaviour
 
     public void Talk()
     {
-        if (TypeWriter.s_instance.IsTextPlaying())
+        if (TypeWriter.s_instance.IsTextPlaying() || LevelManager.s_instance.IsSettingsOpen())
         {
             return;
         }
