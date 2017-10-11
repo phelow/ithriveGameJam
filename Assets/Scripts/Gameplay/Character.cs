@@ -44,6 +44,7 @@ public class Character : MonoBehaviour
     private BoxCollider2D _collider;
 
     private float fadeTime = 10f;
+    public Boolean hasTalked;
 
     void Awake()
     {
@@ -55,6 +56,7 @@ public class Character : MonoBehaviour
         {
             _dialogList.Add(Dialogue.DialogueFactory(text));
         }
+        hasTalked = false;
         
     }
 
@@ -110,7 +112,6 @@ public class Character : MonoBehaviour
 
     public void ShowCharacter()
     {
-        /*_dialog = _dialogList[Random.Range(0, _dialogList.Count)];*/
         if (_dialogList.Count > 1) {
             _dialogIndex = UnityEngine.Random.Range(0, _dialogList.Count);
         }else {
@@ -145,7 +146,7 @@ public class Character : MonoBehaviour
         {
             return;
         }
-
+        hasTalked = true;
         TypeWriter.s_instance.PlayDialogue(_dialogList[_dialogIndex]);
         if (_dialogList.Count > 1) {
             _dialogIndex++;

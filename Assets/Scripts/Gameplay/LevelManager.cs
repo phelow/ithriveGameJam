@@ -6,8 +6,9 @@ using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.EventSystems;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour, IPointerEnterHandler
 {
     public static LevelManager s_instance;
 
@@ -57,6 +58,9 @@ public class LevelManager : MonoBehaviour
     private AsyncOperation async;
 
     public static float ghostFadeAlpha = .35f;
+    private Coroutine coroutineFlash;
+    bool hasEveryoneTalked;
+    bool hasFlashedButton;
 
     public void Awake() {
         if (s_instance != null)
@@ -69,13 +73,47 @@ public class LevelManager : MonoBehaviour
         talking = GameObject.Find("talking").GetComponent<SpriteRenderer>();
         _button = GetComponent<Button>();
         _button.onClick.AddListener(AdvanceState);
+        
+        
         _buttonText = _button.GetComponentInChildren<Text>();
         _buttonText.text = "To Night";
         s_instance = this;
 
-        StartCoroutine(FlashButton());
+        StartCoroutine(CheckIfCharactersTalked());
         StartLights();
+
+        hasEveryoneTalked = false;
+        hasFlashedButton = false;
+    }
+    
+
+    private IEnumerator CheckIfCharactersTalked() {
+        if(_currentStage == LevelStage.Morning)
+        {
+            yield break;
+        }
+        hasEveryoneTalked = false;
         
+        while (!hasEveryoneTalked)
+        {
+            yield return new WaitForSeconds(1f);
+            var characters = (_currentStage == LevelStage.Day) ? persons : ghosts;
+            int count = 0;
+            foreach (var c in characters)
+            {
+                if (c.hasTalked)
+                {
+                    count++;
+                }
+            }
+            if (count == characters.Count)
+            {
+                hasEveryoneTalked = true;
+            }
+            
+        }
+        hasFlashedButton = true;
+        coroutineFlash = StartCoroutine(FlashButton());
     }
 
     private void StartLights() {
@@ -131,7 +169,7 @@ public class LevelManager : MonoBehaviour
                 ShowCharacters(ghosts);
                 EnableTalkForCharacters(ghosts);
                 Global.soundManager.DayToNight();
-                
+                StartCoroutine(CheckIfCharactersTalked());
                 break;
             case LevelStage.Night:
                 _buttonText.text = "Next Day";
@@ -156,6 +194,7 @@ public class LevelManager : MonoBehaviour
                 }
                 HideCharacters(ghosts);
                 ShowCharacters(persons);
+                StartCoroutine(CheckIfCharactersTalked());
                 break;
         }
     }
@@ -247,7 +286,7 @@ public class LevelManager : MonoBehaviour
         HideCharacters(ghosts);
         StartLights();
         UpdateNextLevel();
-        
+        StartCoroutine(CheckIfCharactersTalked());
     }
 
     private void UpdateNextLevel() {
@@ -291,32 +330,49 @@ public class LevelManager : MonoBehaviour
     }
 
     IEnumerator FlashButton() {
-        var startColor = _button.colors.normalColor;
+        var startColor = Color.white;
         var endColor = Color.black;
-        float t = .25f;
+        float t = .1f;
         float tPassed = 0f;
-        var cb = _button.colors;
+        var image = _button.GetComponent<Image>();
+        int i = 0;
 
         while (true)
         {
             while (tPassed < t)
             {
-                cb.normalColor = Color.Lerp(startColor, endColor, tPassed / t);
-                _button.colors = cb;
+                image.color = Color.Lerp(startColor, endColor, tPassed / t);
+                
                 tPassed += Time.deltaTime;
                 yield return null;
             }
 
             while (tPassed > 0f)
             {
-                cb.normalColor = Color.Lerp(startColor, endColor, tPassed / t);
-                _button.colors = cb;
+                image.color = Color.Lerp(startColor, endColor, tPassed / t);
+                
                 tPassed -= Time.deltaTime;
                 yield return null;
+            }
+            i++;
+            if (i % 2 == 0)
+            {
+                yield return new WaitForSeconds(1f);
             }
         }
         
     }
+
+    private void StopFlashButton() {
+        var image = _button.GetComponent<Image>();
+        image.color = Color.white;
+        if (coroutineFlash != null)
+        {
+            StopCoroutine(coroutineFlash);
+        }
+    }
+
+
 
     private void Update() {
         if(SceneManager.GetActiveScene().name == "Credits")
@@ -333,5 +389,9 @@ public class LevelManager : MonoBehaviour
             loadingText.SetActive(true);
             StartCoroutine(LoadingProgress());
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        StopFlashButton();
     }
 }
