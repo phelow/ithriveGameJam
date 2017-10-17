@@ -45,7 +45,7 @@ public class TypeWriter : MonoBehaviour
         dialoguePanel.SetActive(false);
         blur.SetActive(false);
 
-        StartCoroutine(PingPongBackground());
+        //StartCoroutine(PingPongBackground());
     }
 
     void Update()
