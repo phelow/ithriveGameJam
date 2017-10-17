@@ -196,10 +196,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
                 _lightDay.SetActive(true);
                 _lightMorning.SetActive(false);
                 _lightNight.SetActive(false);
-                if (CheckForEndOfGame())
-                {
-                    return;
-                }
+                
                 HideCharacters(ghosts);
                 ShowCharacters(persons);
                 StartCoroutine(CheckIfCharactersTalked());

@@ -211,5 +211,6 @@ public class Urn : MonoBehaviour
         s_urnsLocked = false;
         ghost.Fade(LevelManager.ghostFadeAlpha, .2f);
         urn.ghost.Fade(LevelManager.ghostFadeAlpha, .2f);
+        LevelManager.s_instance.CheckForEndOfGame();
     }
 }
