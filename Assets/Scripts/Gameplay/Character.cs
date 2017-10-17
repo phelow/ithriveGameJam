@@ -43,7 +43,7 @@ public class Character : MonoBehaviour
     public bool isGhost;
     private BoxCollider2D _collider;
 
-    private float fadeTime = 10f;
+    //private float fadeTime = 10f;
     public Boolean hasTalked;
 
     void Awake()

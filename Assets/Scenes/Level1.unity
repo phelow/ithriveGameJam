@@ -1419,17 +1419,27 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114358148903298294, guid: 7fa5b732b13a3c749aa8273d515ceaf4,
-        type: 2}
-      propertyPath: blur
-      value: 
-      objectReference: {fileID: 302469258}
     - target: {fileID: 114334974324512564, guid: 7fa5b732b13a3c749aa8273d515ceaf4,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114334974324512564, guid: 7fa5b732b13a3c749aa8273d515ceaf4,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358148903298294, guid: 7fa5b732b13a3c749aa8273d515ceaf4,
+        type: 2}
+      propertyPath: blur
+      value: 
+      objectReference: {fileID: 302469258}
+    - target: {fileID: 114891711740983944, guid: 7fa5b732b13a3c749aa8273d515ceaf4,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114891711740983944, guid: 7fa5b732b13a3c749aa8273d515ceaf4,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1

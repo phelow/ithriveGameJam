@@ -16,10 +16,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] sounds;
 
     private int listIndex;
-    private bool listPlaying = false;
+    //private bool listPlaying = false;
     private float currentClipTime;
 
-    private float fadeSpeed = 8;
+    //private float fadeSpeed = 8;
     private float musicFadeSpeed = 2;
     private float characterMusicFadeSpeed = 1;
 

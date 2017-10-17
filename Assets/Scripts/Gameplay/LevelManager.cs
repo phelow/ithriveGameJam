@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
     private GameObject _lightNight;
     [SerializeField]
     private GameObject _lightMorning;
+    private Light lightMorning;
 
     [SerializeField]
     //private TextMeshProUGUI _daysPassedText;
@@ -62,20 +63,22 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
     bool hasEveryoneTalked;
 
     private GameObject settingsButton;
+
+    private Image fade;
     
 
     public void Awake() {
         if (s_instance != null)
         {
-            Destroy(transform.parent.gameObject);
             Destroy(gameObject);
             return;
         }
 
         talking = GameObject.Find("talking").GetComponent<SpriteRenderer>();
-        _button = GetComponent<Button>();
+        _button = GameObject.Find("AdvanceState").GetComponent<Button>();
         _button.onClick.AddListener(AdvanceState);
-        
+        loadingText = GameObject.Find("Loading Text");
+        loadingText.SetActive(false);
         
         _buttonText = _button.GetComponentInChildren<Text>();
         _buttonText.text = "To Night";
@@ -87,6 +90,8 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
         StartLights();
 
         hasEveryoneTalked = false;
+        fade = GameObject.Find("Fade").GetComponent<Image>();
+        lightMorning = _lightMorning.GetComponent<Light>();
         
     }
 
@@ -243,7 +248,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
     }
 
 
-    public bool CheckForEndOfGame()
+    public void CheckForEndOfGame()
     {
         Urn[] urns = GameObject.FindObjectsOfType<Urn>();
         bool victory = true;
@@ -254,10 +259,33 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
 
         if (victory)
         {
-            isWaitingForNextLevel = true;
-            return true;
+            StartCoroutine(WinFadeEffect());    
         }
-        return false;
+    }
+
+    IEnumerator WinFadeEffect() {
+        lightMorning = GameObject.Find("#LIGHT_Morning").GetComponent<Light>();
+        yield return new WaitForSeconds(.25f);
+
+        float tGhost = 1f;
+        float tLight = 1.4f;
+        float tFade = 1.5f;
+        float tPassed = 0f;
+
+        foreach (var g in ghosts)
+        {
+            g.Fade(1, tGhost);
+        }
+        
+        while (tPassed < tFade + .5f)
+        {
+            lightMorning.intensity = Mathf.Lerp(1, 200, tPassed / tLight);
+            fade.color = Color.Lerp(new Color(1, 1, 1, 0), Color.white, tPassed / tFade);
+            tPassed += Time.deltaTime;
+            yield return null;
+        }
+        
+        isWaitingForNextLevel = true;
     }
 
     private void GetCharacters() {
@@ -281,17 +309,34 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
         isWaitingForNextLevel = false;
         isLoadingNextLevel = false;
         loadingText.SetActive(false);
+        StartCoroutine(FadeIn());
+
         if (nextLevel > maxLevel)
         {
             return;
         }
-
+        
         GetCharacters();
         ShowCharacters(persons);
         HideCharacters(ghosts);
         StartLights();
         UpdateNextLevel();
         StartCoroutine(CheckIfCharactersTalked());
+
+        
+        
+    }
+
+    private IEnumerator FadeIn() {
+        float tPassed = 0;
+        float tFade = .25f;
+        while(tPassed <= tFade)
+        {
+            fade.color = Color.Lerp(Color.white, new Color(1, 1, 1, 0), tPassed / tFade);
+            tPassed += Time.deltaTime;
+            yield return null;
+        }
+        fade.color = new Color(1, 1, 1, 0);
     }
 
     private void UpdateNextLevel() {
