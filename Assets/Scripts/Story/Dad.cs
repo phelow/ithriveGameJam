@@ -14,10 +14,9 @@ public class Dad : Character {
         StartCoroutine(Delayed());
     }
 
-    IEnumerator Delayed()
-    {
+    IEnumerator Delayed() {
         yield return new WaitForSeconds(SecondsToDisappear);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
-    
+
 }

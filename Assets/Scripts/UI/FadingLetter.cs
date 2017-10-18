@@ -22,7 +22,7 @@ public class FadingLetter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(FadeOutLetter());
+        //StartCoroutine(FadeOutLetter());
     }
 
     public void SetSpookiness(float spookiness)

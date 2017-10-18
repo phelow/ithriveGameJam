@@ -16,7 +16,7 @@ public class StartGame : MonoBehaviour {
 
     public void startButton()
     {
-        var scene = SceneManager.GetSceneByName(nextScene);
+        
         isWaitingForNextLevel = true;
     }
 

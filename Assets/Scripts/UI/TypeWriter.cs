@@ -165,7 +165,7 @@ public class TypeWriter : MonoBehaviour
                 int substringStartIndex = Random.Range(0, i);
                 float spaceOutAmount = Screen.height;
 
-                int charactersCreated = (int)Random.Range(1.0f, Mathf.Max(1.0f, sentences[currentPointer]._spookiness));
+                int charactersCreated = 0;//(int)Random.Range(1.0f, Mathf.Max(1.0f, sentences[currentPointer]._spookiness));
 
                 for (int c = 0; c < charactersCreated; c++)
                 {

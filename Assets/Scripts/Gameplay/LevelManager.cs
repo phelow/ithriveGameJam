@@ -290,8 +290,8 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
 
     private void GetCharacters() {
         var characters = GameObject.FindObjectsOfType<Character>();
-        ghosts = characters.Where(x => x.isGhost).ToList<Character>();
-        persons = characters.Where(x => !x.isGhost).ToList<Character>();
+        ghosts = characters.Where(x => x.isGhost && x.transform.parent != null).ToList<Character>();
+        persons = characters.Where(x => !x.isGhost && x.transform.parent != null).ToList<Character>();
     }
 
     public void SetTalking(Sprite sprite)
