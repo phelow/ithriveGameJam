@@ -201,7 +201,6 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
                 _lightDay.SetActive(true);
                 _lightMorning.SetActive(false);
                 _lightNight.SetActive(false);
-                
                 HideCharacters(ghosts);
                 ShowCharacters(persons);
                 StartCoroutine(CheckIfCharactersTalked());
@@ -259,11 +258,14 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
 
         if (victory)
         {
+            
             StartCoroutine(WinFadeEffect());    
         }
     }
 
     IEnumerator WinFadeEffect() {
+        LevelManager.s_instance.SetAdvanceButtonVisible(true);
+        _button.gameObject.SetActive(false);
         lightMorning = GameObject.Find("#LIGHT_Morning").GetComponent<Light>();
         yield return new WaitForSeconds(.25f);
 
@@ -284,8 +286,15 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
             tPassed += Time.deltaTime;
             yield return null;
         }
-        
+        _currentStage = LevelStage.Day;
+        _buttonText.text = "To Night";
+        _currentStage = LevelStage.Day;
+        _lightDay.SetActive(true);
+        _lightMorning.SetActive(false);
+        _lightNight.SetActive(false);
+        _button.gameObject.SetActive(true);
         isWaitingForNextLevel = true;
+        
     }
 
     private void GetCharacters() {
@@ -315,7 +324,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
         {
             return;
         }
-        
+        LevelManager.s_instance.SetAdvanceButtonVisible(false);
         GetCharacters();
         ShowCharacters(persons);
         HideCharacters(ghosts);

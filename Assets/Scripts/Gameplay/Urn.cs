@@ -126,6 +126,7 @@ public class Urn : MonoBehaviour
                 _heldObject.ClearHeldObject();
                 return;
             }
+            LevelManager.s_instance.SetAdvanceButtonVisible(true);
 
             ghostPosition = ghostSprite.transform.localPosition;
             ghostRotation = ghostSprite.transform.localRotation;
@@ -163,10 +164,6 @@ public class Urn : MonoBehaviour
         }
     }
 
-    private void FixGhostTransforms(Urn holdable) {
-        var tran = holdable.transform;
-        
-    }
 
     private IEnumerator MoveUrnToPosition(Vector3 originalPosition, Vector3 midpoint, Vector3 targetPosition, Urn urn)
     {
@@ -205,12 +202,16 @@ public class Urn : MonoBehaviour
         ghostSprite.transform.localScale = urn.ghostScale;
 
         urn.ghostSprite.transform.localPosition = ghostPosition;
-        urn.ghostSprite.transform.localScale = ghostScale;
         urn.ghostSprite.transform.localRotation = ghostRotation;
+        urn.ghostSprite.transform.localScale = ghostScale;
 
-        s_urnsLocked = false;
-        ghost.Fade(LevelManager.ghostFadeAlpha, .2f);
-        urn.ghost.Fade(LevelManager.ghostFadeAlpha, .2f);
-        LevelManager.s_instance.CheckForEndOfGame();
+        if (s_urnsLocked)
+        {
+            s_urnsLocked = false;
+            ghost.Fade(LevelManager.ghostFadeAlpha, .2f);
+            urn.ghost.Fade(LevelManager.ghostFadeAlpha, .2f);
+            LevelManager.s_instance.SetAdvanceButtonVisible(false);
+            LevelManager.s_instance.CheckForEndOfGame();
+        }
     }
 }

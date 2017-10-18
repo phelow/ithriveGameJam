@@ -111,18 +111,6 @@ public class TypeWriter : MonoBehaviour
             (int)(blueValue * 255));
     }
 
-    private IEnumerator PingPongBackground()
-    {
-        while (true)
-        {
-            _backgroundColor = Color.Lerp(
-                Color.Lerp(_backgroundColorA, _backgroundColorB, Mathf.PingPong(Time.time, 1.0f)),
-                Color.clear,
-                Mathf.PingPong(Time.time + _clearOffset, 1.0f));
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
     IEnumerator AnimateText()
     {
         int voiceIndex = sentences[currentPointer]._soundIndex;
