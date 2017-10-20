@@ -57,7 +57,7 @@ public class Character : MonoBehaviour
             _dialogList.Add(Dialogue.DialogueFactory(text));
         }
         hasTalked = false;
-        
+        _dialogIndex = 0;
     }
 
     private IEnumerator UpdateActiveColor()
@@ -111,13 +111,7 @@ public class Character : MonoBehaviour
     }
 
     public void ShowCharacter()
-    {
-        if (_dialogList.Count > 1) {
-            _dialogIndex = UnityEngine.Random.Range(0, _dialogList.Count);
-        }else {
-            _dialogIndex = 0;
-        }
-
+    {       
         if (isGhost)
         {
             StartCoroutine(InterpolateCharacters());
