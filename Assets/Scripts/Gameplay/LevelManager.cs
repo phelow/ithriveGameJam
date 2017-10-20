@@ -61,10 +61,13 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
     public static float ghostFadeAlpha = .35f;
     private Coroutine coroutineFlash;
     bool hasEveryoneTalked;
+    bool isFirstTimeOnLevel;
 
     private GameObject settingsButton;
 
     private Image fade;
+
+    private Coroutine checkingForCharactersTalking;
     
 
     public void Awake() {
@@ -86,30 +89,44 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
 
         settingsButton = GameObject.Find("Settings Button");
 
-        StartCoroutine(CheckIfCharactersTalked());
+        StartCheckForIfCharactersTalked();
         StartLights();
 
         hasEveryoneTalked = false;
         fade = GameObject.Find("Fade").GetComponent<Image>();
         lightMorning = _lightMorning.GetComponent<Light>();
-        
+        isFirstTimeOnLevel = true;
     }
 
     public bool IsSettingsOpen() {
         return !settingsButton.activeSelf;
     }
     
+    private void StartCheckForIfCharactersTalked() {
+        if (checkingForCharactersTalking != null)
+        {
+            return;
+        }
+        checkingForCharactersTalking = StartCoroutine(CheckIfCharactersTalked());
+    }
+
+    private void StopCheckForIfCharactersTalked() {
+        StopCoroutine(checkingForCharactersTalking);
+        checkingForCharactersTalking = null;
+    }
 
     private IEnumerator CheckIfCharactersTalked() {
-        if(_currentStage == LevelStage.Morning)
-        {
-            yield break;
-        }
+        
         hasEveryoneTalked = false;
         
         while (!hasEveryoneTalked)
         {
             yield return new WaitForSeconds(1f);
+            if (_currentStage == LevelStage.Morning || !isFirstTimeOnLevel)
+            {
+                checkingForCharactersTalking = null;
+                yield break;
+            }
             var characters = (_currentStage == LevelStage.Day) ? persons : ghosts;
             int count = 0;
             foreach (var c in characters)
@@ -124,8 +141,10 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
                 hasEveryoneTalked = true;
             }
             
+            
         }
         
+        checkingForCharactersTalking = null;
         coroutineFlash = StartCoroutine(FlashButton());
     }
 
@@ -182,7 +201,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
                 ShowCharacters(ghosts);
                 EnableTalkForCharacters(ghosts);
                 Global.soundManager.DayToNight();
-                StartCoroutine(CheckIfCharactersTalked());
+                StartCheckForIfCharactersTalked();
                 break;
             case LevelStage.Night:
                 _buttonText.text = "Next Day";
@@ -203,7 +222,7 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
                 _lightNight.SetActive(false);
                 HideCharacters(ghosts);
                 ShowCharacters(persons);
-                StartCoroutine(CheckIfCharactersTalked());
+                isFirstTimeOnLevel = false;
                 break;
         }
     }
@@ -324,15 +343,14 @@ public class LevelManager : MonoBehaviour, IPointerEnterHandler
         {
             return;
         }
+        isFirstTimeOnLevel = true;
         LevelManager.s_instance.SetAdvanceButtonVisible(false);
         GetCharacters();
         ShowCharacters(persons);
         HideCharacters(ghosts);
         StartLights();
         UpdateNextLevel();
-        StartCoroutine(CheckIfCharactersTalked());
-
-        
+        StartCheckForIfCharactersTalked();
         
     }
 
